@@ -22,24 +22,24 @@
     --bg-surface: #101726;
     --bg-card: #162035;
     --bg-card-hover: #1c2a45;
-    
+
     --paper-light: #f9f8f3;
     --paper-card: #ffffff;
-    
+
     --ink-primary: #f1f5f9;
     --ink-secondary: #94a3b8;
     --ink-muted: #64748b;
-    
+
     --gold-accent: #d4a359;
     --gold-glow: rgba(212, 163, 89, 0.25);
     --gold-dim: #b8863b;
-    
+
     --teal-accent: #2dd4bf;
     --blue-accent: #38bdf8;
-    
+
     --border-color: rgba(241, 245, 249, 0.1);
     --border-hover: rgba(212, 163, 89, 0.35);
-    
+
     --font-serif: 'Newsreader', Georgia, serif;
     --font-heading: 'Cinzel', 'Newsreader', serif;
     --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -66,7 +66,7 @@
   .bg-grid {
     position: fixed;
     inset: 0;
-    background-image: 
+    background-image:
       linear-gradient(to right, rgba(255,255,255,0.02) 1px, transparent 1px),
       linear-gradient(to bottom, rgba(255,255,255,0.02) 1px, transparent 1px);
     background-size: 40px 40px;
@@ -1238,7 +1238,7 @@
         <div class="reveal">
           <div class="facts-table">
             <div class="facts-title"><i class="fa-solid fa-id-card"></i> Key Academic Metrics</div>
-            
+
             <div class="fact-row">
               <span class="fact-key">Current Designation</span>
               <span class="fact-val">Assistant Professor</span>
@@ -1616,7 +1616,7 @@
         <!-- Education -->
         <div class="reveal">
           <h3 class="skill-group-title"><i class="fa-solid fa-graduation-cap"></i> Academic Degrees</h3>
-          
+
           <div class="edu-card">
             <h4 class="edu-degree">M.Tech in Computer Science & Engineering</h4>
             <div class="edu-inst">Brainware University, Kolkata</div>
@@ -1631,7 +1631,7 @@
         <!-- Skills Matrix -->
         <div class="reveal">
           <h3 class="skill-group-title"><i class="fa-solid fa-wrench"></i> Technical & Research Stack</h3>
-          
+
           <div style="margin-bottom: 20px;">
             <div style="font-size: 13px; color: var(--ink-secondary); margin-bottom: 8px;">Languages & Systems</div>
             <div class="pill-cloud">
@@ -1674,7 +1674,7 @@
     <!-- ============ OFFICE HOURS & CONTACT (CSE-700) ============ -->
     <section id="contact" style="border-bottom: none;">
       <p class="eyebrow">CSE-700 · Communication</p>
-      
+
       <div class="contact-box reveal">
         <h2 class="contact-title">Office Hours & Academic Inquiries</h2>
         <p class="contact-desc">
@@ -1724,7 +1724,7 @@
   function filterPubs(cat) {
     const cards = document.querySelectorAll('.pub-card');
     const btns = document.querySelectorAll('.filter-btn');
-    
+
     btns.forEach(btn => btn.classList.remove('active'));
     event.target.classList.add('active');
 
