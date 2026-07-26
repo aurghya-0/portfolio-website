@@ -1,0 +1,123 @@
+import React, { useState, useEffect } from 'react';
+import MobileHeader from './components/MobileHeader';
+import SidebarNav from './components/SidebarNav';
+import HeroSection from './components/HeroSection';
+import OrientationSection from './components/OrientationSection';
+import PublicationsSection from './components/PublicationsSection';
+import TeachingSection from './components/TeachingSection';
+import ExperienceSection from './components/ExperienceSection';
+import LeadershipSection from './components/LeadershipSection';
+import ToolkitSection from './components/ToolkitSection';
+import ContactSection from './components/ContactSection';
+import Toast from './components/Toast';
+
+export default function App() {
+  const [activeSection, setActiveSection] = useState('orientation');
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [toastMessage, setToastMessage] = useState('');
+  const [theme, setTheme] = useState(() => {
+    return localStorage.getItem('theme') || 'system';
+  });
+
+  // Apply Theme & Listen to System Color Scheme Changes
+  useEffect(() => {
+    const root = document.documentElement;
+
+    const applyTheme = () => {
+      let isDark = false;
+      if (theme === 'system') {
+        isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      } else {
+        isDark = theme === 'dark';
+      }
+
+      if (isDark) {
+        root.classList.add('dark');
+        root.classList.remove('light');
+      } else {
+        root.classList.add('light');
+        root.classList.remove('dark');
+      }
+    };
+
+    applyTheme();
+
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    const handleSystemChange = () => {
+      if (theme === 'system') {
+        applyTheme();
+      }
+    };
+
+    mediaQuery.addEventListener('change', handleSystemChange);
+    return () => mediaQuery.removeEventListener('change', handleSystemChange);
+  }, [theme]);
+
+  const handleThemeChange = (newTheme) => {
+    setTheme(newTheme);
+    localStorage.setItem('theme', newTheme);
+  };
+
+  const triggerToast = (msg) => {
+    setToastMessage(msg);
+    setTimeout(() => {
+      setToastMessage('');
+    }, 3000);
+  };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const sectionIds = ['orientation', 'publications', 'teaching', 'experience', 'leadership', 'toolkit', 'contact'];
+      const scrollPos = window.scrollY + 180;
+
+      for (let i = sectionIds.length - 1; i >= 0; i--) {
+        const el = document.getElementById(sectionIds[i]);
+        if (el && scrollPos >= el.offsetTop) {
+          setActiveSection(sectionIds[i]);
+          break;
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  return (
+    <div className="app-container relative">
+      <div className="bg-grid-pattern fixed inset-0 pointer-events-none"></div>
+
+      <MobileHeader 
+        isOpen={isMenuOpen} 
+        toggleMenu={() => setIsMenuOpen(!isMenuOpen)} 
+        theme={theme}
+        onThemeChange={handleThemeChange}
+      />
+
+      <div className="shell">
+        <SidebarNav 
+          activeSection={activeSection} 
+          isOpen={isMenuOpen} 
+          closeMenu={() => setIsMenuOpen(false)} 
+          theme={theme}
+          onThemeChange={handleThemeChange}
+        />
+
+        <main>
+          <HeroSection />
+          <OrientationSection />
+          <PublicationsSection onCopyBibtex={triggerToast} />
+          <TeachingSection />
+          <ExperienceSection />
+          <LeadershipSection />
+          <ToolkitSection />
+          <ContactSection onToast={triggerToast} />
+        </main>
+      </div>
+
+      <Toast message={toastMessage} />
+    </div>
+  );
+}
