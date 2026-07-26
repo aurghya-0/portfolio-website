@@ -1,23 +1,23 @@
-# Aurghyadip Kundu — Academic & Faculty Portfolio
+# Aurghyadip Kundu — Academic & Faculty Portfolio (React + Vite)
 
-A responsive, single-page academic portfolio website for **Aurghyadip Kundu**, Assistant Professor of Computer Science & Engineering at NSHM Knowledge Campus, Durgapur.
-
-Styled with a **Syllabus / Academic Index theme**, each main section corresponds to a custom course code (e.g., `CSE-100` Orientation, `CSE-300` Research, `CSE-400` Teaching).
+A modern, high-performance, single-page academic portfolio application for **Aurghyadip Kundu**, Assistant Professor of Computer Science & Engineering at NSHM Knowledge Campus, Durgapur. Built with **React 18**, **Vite**, and styled with an **Academic Syllabus / Midnight Slate Design System**.
 
 ---
 
 ## 🌟 Key Features
 
-- **Academic Syllabus Navigation**: Sticky sidebar indexed by course codes (`CSE-100` through `CSE-700`) with active section highlighting on scroll.
-- **Interactive Research & Publications (`CSE-300`)**:
-  - Category filtering (*AI & Risk Optimisation*, *IoT & Healthcare*, *Software Engineering*).
-  - Expandable publication abstracts and 1-click **BibTeX** copying with toast feedback.
-- **Courses & Pedagogy (`CSE-400`)**: Interactive accordion cards detailing course modules, lab work, and outcome-based learning strategies.
-- **Academic Appointments & Experience (`CSE-200`)**: Timeline view covering teaching positions, institutional roles (IQAC Core Committee, NAAC Criteria 2 Coordinator, NVIDIA Educator), and industry background.
-- **Institutional Leadership & Clubs (`CSE-500`)**: Highlights of student club mentorship (CodeNEST, Open Source Club) and committee contributions.
-- **Qualifications & Toolkit (`CSE-600`)**: Organized breakdown of technical stack (CUDA/HPC, Python, C++, Deep Learning frameworks) and degrees (M.Tech CSE, B.Tech CSE).
-- **Office Hours & Contact (`CSE-700`)**: Direct contact form and institutional contact metadata.
-- **Midnight Slate & Parchment Aesthetic**: Custom CSS design system using Google Fonts (*Cinzel*, *Newsreader*, *Inter*, *JetBrains Mono*), FontAwesome, and Academicons.
+- **Academic Syllabus Navigation (`SidebarNav`)**: Sticky sidebar indexed by course codes (`CSE-100` through `CSE-700`) with dynamic scroll observation and active section tracking.
+- **Interactive Publications Catalog (`PublicationsSection`)**:
+  - Live full-text search across paper titles, venues, abstracts, and keywords.
+  - Category filter tabs (*AI & Risk Optimisation*, *IoT & Healthcare*, *Software Engineering*).
+  - Expandable abstract cards and formatted **BibTeX** code blocks.
+  - One-click copy-to-clipboard citation feedback with animated toast notifications.
+- **Pedagogy & Course Offerings (`TeachingSection`)**: Structured cards detailing lab practicals, outcomes, and tech stacks.
+- **Career & Experience Timeline (`ExperienceSection`)**: Responsive vertical timeline covering university faculty appointments, IQAC Core Committee roles, NAAC Criteria 2 coordination, and industry IoT development.
+- **Institutional Leadership & Service (`LeadershipSection`)**: Faculty advisory, CodeNEST club mentorship, Open Source Student Developers Club, and NVIDIA Jetson Lab governance.
+- **Toolkit & Qualifications (`ToolkitSection`)**: Matrix of technical competencies (CUDA, OpenMP, MPI, Python, C/C++) and academic degrees (M.Tech CSE, B.Tech CSE).
+- **Office Hours & Direct Inquiry Form (`ContactSection`)**: Direct email/social cards and interactive contact form with mail client fallback.
+- **Midnight Slate Aesthetics**: Typography with Google Fonts (*Cinzel*, *Newsreader*, *Inter*, *JetBrains Mono*), Academicons, and Lucide React icons.
 
 ---
 
@@ -25,53 +25,58 @@ Styled with a **Syllabus / Academic Index theme**, each main section corresponds
 
 ```
 .
-├── index.html     # Single-page web application (HTML markup, embedded CSS, & JS logic)
-├── profile.jpg    # Hero section portrait image of Aurghyadip Kundu
-├── README.md      # Project documentation
-└── .gitignore     # Git ignore rules
+├── public/
+│   ├── profile.jpg     # Hero section portrait image
+│   └── CNAME           # Custom domain mapping (aurghyadip.in)
+├── src/
+│   ├── components/     # Modular React components
+│   │   ├── SidebarNav.jsx
+│   │   ├── MobileHeader.jsx
+│   │   ├── HeroSection.jsx
+│   │   ├── OrientationSection.jsx
+│   │   ├── PublicationsSection.jsx
+│   │   ├── PublicationCard.jsx
+│   │   ├── TeachingSection.jsx
+│   │   ├── ExperienceSection.jsx
+│   │   ├── LeadershipSection.jsx
+│   │   ├── ToolkitSection.jsx
+│   │   ├── ContactSection.jsx
+│   │   └── Toast.jsx
+│   ├── data/
+│   │   └── portfolioData.js # Structured data model for all sections
+│   ├── styles/
+│   │   └── index.css   # CSS design system, variables & layout
+│   ├── App.jsx         # Main application container & scroll observer
+│   └── main.jsx        # React application entry point
+├── index.html          # Vite HTML template with Google Fonts & CDN icons
+├── package.json        # NPM dependencies & scripts
+├── vite.config.js      # Vite build configuration
+└── README.md           # Project documentation
 ```
 
 ---
 
 ## 🚀 Local Development
 
-No build steps, package managers, or compilation required. You can view the site locally using any of the following methods:
-
-1. **Direct Browser Execution**:
-   Simply open [index.html](file:///home/aurghya/Coding/aurghyadip_portfolio/index.html) directly in any web browser.
-
-2. **Local HTTP Server**:
+1. **Install Dependencies**:
    ```bash
-   python3 -m http.server 8000
+   npm install
    ```
-   Then open `http://localhost:8000` in your web browser.
+
+2. **Start Dev Server**:
+   ```bash
+   npm run dev
+   ```
+   Open your browser at `http://localhost:5173`.
+
+3. **Production Build**:
+   ```bash
+   npm run build
+   ```
+   The compiled bundle will be generated in the `dist/` directory.
 
 ---
 
-## 🌐 Hosting on GitHub Pages
+## 📜 License & Copyright
 
-1. Initialize git and commit your files:
-   ```bash
-   git init
-   git add index.html profile.jpg README.md .gitignore
-   git commit -m "Initial portfolio release"
-   git branch -M main
-   ```
-2. Link your GitHub repository and push:
-   ```bash
-   git remote add origin https://github.com/<your-username>/<repo-name>.git
-   git push -u origin main
-   ```
-3. Enable GitHub Pages:
-   - Navigate to **Settings → Pages** on your GitHub repository.
-   - Set **Source** to **Deploy from a branch**.
-   - Select `main` branch and `/ (root)` directory, then click **Save**.
-4. Your site will be live at `https://<your-username>.github.io/<repo-name>/`.
-
----
-
-## 📜 Technical Details
-
-- **Typography**: Google Fonts (*Newsreader*, *Cinzel*, *Inter*, *JetBrains Mono*) loaded via CDN.
-- **Icons**: FontAwesome 6 & Academicons.
-- **Accessibility & UX**: Fully responsive layout with mobile drawer navigation, smooth scrolling, keyboard focus rings, and `prefers-reduced-motion` support.
+© 2026 Aurghyadip Kundu. All rights reserved.

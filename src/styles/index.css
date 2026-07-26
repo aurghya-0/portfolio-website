@@ -1,0 +1,187 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: 'Newsreader', Georgia, serif;
+  --font-heading: 'Cinzel', 'Newsreader', serif;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Default Dark Mode (Oxford Crimson & Antique Bronze) */
+  html.dark, html:not(.light) {
+    --bg-page: #0f0a0c;
+    --bg-header: rgba(15, 10, 12, 0.92);
+    --bg-sidebar: rgba(15, 10, 12, 0.96);
+    --bg-card: rgba(34, 21, 29, 0.75);
+    --bg-card-hover: rgba(46, 27, 39, 0.88);
+    --bg-input: #150d12;
+    --bg-tag: rgba(225, 29, 72, 0.12);
+    --bg-code: #0a0507;
+    
+    --border-main: rgba(225, 29, 72, 0.18);
+    --border-hover: rgba(225, 29, 72, 0.5);
+    --border-subtle: rgba(255, 255, 255, 0.08);
+
+    --text-title: #ffffff;
+    --text-heading: #f8fafc;
+    --text-body: #cbd5e1;
+    --text-muted: #94a3b8;
+    --text-subtle: #64748b;
+    
+    --accent-crimson: #fb7185;
+    --accent-gold: #f59e0b;
+    --accent-blue: #38bdf8;
+
+    --grid-line: rgba(244, 63, 94, 0.03);
+    --glow-orb: rgba(225, 29, 72, 0.15);
+    --shadow-card: rgba(0, 0, 0, 0.6);
+  }
+
+  /* Light Mode (Ivory Parchment & Oxford Crimson) */
+  html.light {
+    --bg-page: #faf6f3;
+    --bg-header: rgba(250, 246, 243, 0.95);
+    --bg-sidebar: rgba(250, 246, 243, 0.98);
+    --bg-card: #ffffff;
+    --bg-card-hover: #ffffff;
+    --bg-input: #ffffff;
+    --bg-tag: rgba(225, 29, 72, 0.08);
+    --bg-code: #251620;
+    
+    --border-main: rgba(225, 29, 72, 0.18);
+    --border-hover: rgba(225, 29, 72, 0.5);
+    --border-subtle: rgba(0, 0, 0, 0.08);
+
+    --text-title: #180b11;
+    --text-heading: #26121c;
+    --text-body: #3d2b35;
+    --text-muted: #66505c;
+    --text-subtle: #8c7482;
+    
+    --accent-crimson: #be123c;
+    --accent-gold: #b45309;
+    --accent-blue: #0284c7;
+
+    --grid-line: rgba(190, 18, 60, 0.035);
+    --glow-orb: rgba(225, 29, 72, 0.06);
+    --shadow-card: rgba(190, 18, 60, 0.08);
+  }
+
+  body {
+    background-color: var(--bg-page);
+    color: var(--text-body);
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  ::selection {
+    background: #e11d48;
+    color: #fff;
+  }
+}
+
+/* Outer Layout Shell */
+.shell {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  max-width: 1240px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 1024px) {
+  .shell {
+    grid-template-columns: 1fr;
+  }
+}
+
+main {
+  min-width: 0;
+  max-width: 960px;
+  width: 100%;
+}
+
+/* Background Grid Overlay */
+.bg-grid-pattern {
+  background-image: 
+    linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-page);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-hover);
+  border-radius: 4px;
+}
+
+/* Glassmorphism Cards */
+.glass-card {
+  background: var(--bg-card);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--border-main);
+  transition: all 0.3s ease;
+}
+.glass-card:hover {
+  background: var(--bg-card-hover);
+  border-color: var(--border-hover);
+  box-shadow: 0 10px 30px -10px var(--shadow-card), 0 0 20px rgba(225, 29, 72, 0.12);
+}
+
+/* Theme Semantic Text & Color Utility Helper Classes */
+.theme-title {
+  color: var(--text-title);
+}
+
+.theme-heading {
+  color: var(--text-heading);
+}
+
+.theme-body {
+  color: var(--text-body);
+}
+
+.theme-muted {
+  color: var(--text-muted);
+}
+
+.theme-crimson {
+  color: var(--accent-crimson);
+}
+
+.theme-gold {
+  color: var(--accent-gold);
+}
+
+.theme-border {
+  border-color: var(--border-main);
+}
+
+.theme-bg-input {
+  background-color: var(--bg-input);
+  color: var(--text-title);
+  border-color: var(--border-main);
+}
+
+/* Shimmer & Glow Animations */
+@keyframes pulseGlow {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50% { opacity: 0.7; transform: scale(1.05); }
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 6s ease-in-out infinite;
+}
