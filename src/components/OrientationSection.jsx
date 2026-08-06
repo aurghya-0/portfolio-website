@@ -29,10 +29,10 @@ export default function OrientationSection() {
         {/* Bio & Research Pillars */}
         <div className="space-y-5">
           <p className="font-['Newsreader'] text-lg sm:text-xl theme-heading leading-relaxed">
-            I am an Assistant Professor in the Department of Computer Science & Engineering at NSHM Knowledge Campus, Durgapur. My academic journey combines a rigorous foundation in Computer Science with a passion for modern software engineering, data analytics, and high-performance execution frameworks.
+            I am an Assistant Professor and Open Source Developer in the Department of Computer Science & Engineering at NSHM Knowledge Campus, Durgapur, with 4+ years of academic experience across CSE and IT departments.
           </p>
           <p className="text-xs sm:text-sm theme-body leading-relaxed font-sans">
-            Beyond the classroom, I contribute actively to institutional governance (IQAC Core Committee Member, NAAC Criteria 2 Coordinator) and lead student innovation initiatives such as CodeNEST and the Open Source Student Developers Club.
+            I specialize in Python, DSA/DAA, Software Engineering, and C Programming, with active contributions to curriculum design, academic coordination, and innovation-driven student communities such as CodeNEST and the Open Source Student Developers Club.
           </p>
 
           {/* 4 Core Research Pillars Grid */}

@@ -7,6 +7,7 @@ import PublicationsSection from './components/PublicationsSection';
 import TeachingSection from './components/TeachingSection';
 import ExperienceSection from './components/ExperienceSection';
 import LeadershipSection from './components/LeadershipSection';
+import OpenSourceSection from './components/OpenSourceSection';
 import ToolkitSection from './components/ToolkitSection';
 import ContactSection from './components/ContactSection';
 import Toast from './components/Toast';
@@ -67,7 +68,7 @@ export default function App() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sectionIds = ['orientation', 'publications', 'teaching', 'experience', 'leadership', 'toolkit', 'contact'];
+      const sectionIds = ['orientation', 'publications', 'teaching', 'experience', 'leadership', 'opensource', 'toolkit', 'contact'];
       const scrollPos = window.scrollY + 180;
 
       for (let i = sectionIds.length - 1; i >= 0; i--) {
@@ -112,6 +113,7 @@ export default function App() {
           <TeachingSection />
           <ExperienceSection />
           <LeadershipSection />
+          <OpenSourceSection />
           <ToolkitSection />
           <ContactSection onToast={triggerToast} />
         </main>

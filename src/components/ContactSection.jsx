@@ -46,7 +46,7 @@ export default function ContactSection() {
             <Mail className="w-4 h-4 text-[var(--accent-crimson)] shrink-0 group-hover:scale-110 transition-transform" />
             <div className="min-w-0">
               <span className="block font-mono text-[9px] uppercase theme-muted tracking-wider">Email</span>
-              <span className="text-xs font-medium theme-title truncate block group-hover:text-[var(--accent-crimson)]">aurghyadipk</span>
+              <span className="text-xs font-medium theme-title truncate block group-hover:text-[var(--accent-crimson)]">adkundu</span>
             </div>
           </a>
 

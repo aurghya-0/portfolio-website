@@ -1,6 +1,6 @@
 import React from 'react';
-import { EDUCATION, SKILL_GROUPS } from '../data/portfolioData';
-import { GraduationCap, Wrench, Award } from 'lucide-react';
+import { EDUCATION, SKILL_GROUPS, INTERESTS } from '../data/portfolioData';
+import { GraduationCap, Wrench, Award, Heart } from 'lucide-react';
 
 export default function ToolkitSection() {
   return (
@@ -29,10 +29,13 @@ export default function ToolkitSection() {
                 <h4 className="font-['Newsreader'] text-base font-semibold theme-title mb-1">
                   {edu.degree}
                 </h4>
-                <div className="text-xs theme-muted flex items-center gap-1.5">
+                <div className="text-xs theme-muted flex items-center gap-1.5 mb-1">
                   <Award size={12} className="text-[var(--accent-gold)]" />
                   <span>{edu.institution}</span>
                 </div>
+                <div className="text-[11px] theme-muted font-mono mb-1">{edu.period}</div>
+                <div className="text-xs font-semibold text-[var(--accent-crimson)] mb-1">{edu.gpa}</div>
+                <p className="text-[11px] theme-body leading-relaxed">{edu.courses}</p>
               </div>
             ))}
           </div>
@@ -68,6 +71,23 @@ export default function ToolkitSection() {
                 </div>
               </div>
             ))}
+          </div>
+
+          <div className="mt-6">
+            <div className="text-xs theme-muted font-medium mb-2 flex items-center gap-1.5">
+              <Heart size={12} className="text-[var(--accent-crimson)]" />
+              <span>Interests</span>
+            </div>
+            <div className="flex flex-wrap gap-1.5">
+              {INTERESTS.map((interest, idx) => (
+                <span
+                  key={idx}
+                  className="font-sans text-xs px-2.5 py-1 rounded-lg border bg-[var(--bg-input)] theme-body border-[var(--border-main)]"
+                >
+                  {interest}
+                </span>
+              ))}
+            </div>
           </div>
         </div>
       </div>

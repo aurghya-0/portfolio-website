@@ -9,6 +9,7 @@ export default function LeadershipSection() {
       case 'code': return <Code size={14} className="text-[var(--accent-crimson)]" />;
       case 'cpu': return <Cpu size={14} className="text-[var(--accent-crimson)]" />;
       case 'book-open': return <BookOpen size={14} className="text-[var(--accent-crimson)]" />;
+      case 'google': return <i className="fa-brands fa-google text-[13px] text-[var(--accent-crimson)]" />;
       default: return <Users size={14} className="text-[var(--accent-crimson)]" />;
     }
   };
