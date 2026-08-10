@@ -3,7 +3,7 @@ import { AUTHOR_INFO, SYLLABUS_NAV } from '../data/portfolioData';
 import { BookOpen, MapPin, Award } from 'lucide-react';
 import ThemeToggle from './ThemeToggle';
 
-export default function SidebarNav({ activeSection, isOpen, closeMenu, theme, onThemeChange }) {
+export default function SidebarNav({ activeSection, isOpen, closeMenu, theme, onThemeChange, onOpenCv }) {
   const handleNavClick = (id) => {
     closeMenu();
     const element = document.getElementById(id);
@@ -76,8 +76,8 @@ export default function SidebarNav({ activeSection, isOpen, closeMenu, theme, on
 
         {/* Sidebar Footer with Theme Switcher */}
         <div className="pt-4 border-t border-[var(--border-main)] font-mono text-[11px] theme-muted space-y-3">
-          <div className="flex items-center justify-between">
-            <span className="text-[10px] uppercase tracking-wider theme-muted">Theme</span>
+          <div className="flex flex-col gap-1.5">
+            <span className="text-[10px] uppercase tracking-wider theme-muted font-semibold">Theme</span>
             <ThemeToggle theme={theme} onThemeChange={onThemeChange} />
           </div>
 

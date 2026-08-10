@@ -12,64 +12,94 @@
     scroll-behavior: smooth;
   }
 
-  /* Default Dark Mode (Oxford Crimson & Antique Bronze) */
-  html.dark, html:not(.light) {
-    --bg-page: #0f0a0c;
-    --bg-header: rgba(15, 10, 12, 0.92);
-    --bg-sidebar: rgba(15, 10, 12, 0.96);
-    --bg-card: rgba(34, 21, 29, 0.75);
-    --bg-card-hover: rgba(46, 27, 39, 0.88);
-    --bg-input: #150d12;
-    --bg-tag: rgba(225, 29, 72, 0.12);
-    --bg-code: #0a0507;
+  /* Dark Mode (Royal Amethyst & Electric Violet) */
+  html.dark {
+    --bg-page: #0b0713;
+    --bg-header: rgba(11, 7, 19, 0.94);
+    --bg-sidebar: rgba(11, 7, 19, 0.97);
+    --bg-card: rgba(26, 17, 43, 0.75);
+    --bg-card-hover: rgba(38, 25, 61, 0.88);
+    --bg-input: #130a21;
+    --bg-tag: rgba(168, 85, 247, 0.14);
+    --bg-code: #07030d;
     
-    --border-main: rgba(225, 29, 72, 0.18);
-    --border-hover: rgba(225, 29, 72, 0.5);
+    --border-main: rgba(168, 85, 247, 0.2);
+    --border-hover: rgba(168, 85, 247, 0.55);
     --border-subtle: rgba(255, 255, 255, 0.08);
 
     --text-title: #ffffff;
-    --text-heading: #f8fafc;
-    --text-body: #cbd5e1;
-    --text-muted: #94a3b8;
-    --text-subtle: #64748b;
+    --text-heading: #f5f3ff;
+    --text-body: #e2e8f0;
+    --text-muted: #a78bfa;
+    --text-subtle: #7c3aed;
     
-    --accent-crimson: #fb7185;
-    --accent-gold: #f59e0b;
-    --accent-blue: #38bdf8;
+    --accent-crimson: #c084fc;
+    --accent-gold: #38bdf8;
+    --accent-blue: #818cf8;
 
-    --grid-line: rgba(244, 63, 94, 0.03);
-    --glow-orb: rgba(225, 29, 72, 0.15);
-    --shadow-card: rgba(0, 0, 0, 0.6);
+    --grid-line: rgba(168, 85, 247, 0.04);
+    --glow-orb: rgba(168, 85, 247, 0.18);
+    --shadow-card: rgba(0, 0, 0, 0.65);
   }
 
-  /* Light Mode (Ivory Parchment & Oxford Crimson) */
+  /* Light Mode (Ivory Lavender & Royal Violet) */
   html.light {
-    --bg-page: #faf6f3;
-    --bg-header: rgba(250, 246, 243, 0.95);
-    --bg-sidebar: rgba(250, 246, 243, 0.98);
+    --bg-page: #fbf8ff;
+    --bg-header: rgba(251, 248, 255, 0.95);
+    --bg-sidebar: rgba(251, 248, 255, 0.98);
     --bg-card: #ffffff;
-    --bg-card-hover: #ffffff;
+    --bg-card-hover: #faf5ff;
     --bg-input: #ffffff;
-    --bg-tag: rgba(225, 29, 72, 0.08);
-    --bg-code: #251620;
+    --bg-tag: rgba(147, 51, 234, 0.09);
+    --bg-code: #1e1035;
     
-    --border-main: rgba(225, 29, 72, 0.18);
-    --border-hover: rgba(225, 29, 72, 0.5);
+    --border-main: rgba(147, 51, 234, 0.18);
+    --border-hover: rgba(147, 51, 234, 0.5);
     --border-subtle: rgba(0, 0, 0, 0.08);
 
-    --text-title: #180b11;
-    --text-heading: #26121c;
-    --text-body: #3d2b35;
-    --text-muted: #66505c;
-    --text-subtle: #8c7482;
+    --text-title: #1e1035;
+    --text-heading: #2e105a;
+    --text-body: #3b295a;
+    --text-muted: #6b46c1;
+    --text-subtle: #8b5cf6;
     
-    --accent-crimson: #be123c;
-    --accent-gold: #b45309;
-    --accent-blue: #0284c7;
+    --accent-crimson: #7e22ce;
+    --accent-gold: #0284c7;
+    --accent-blue: #4f46e5;
 
-    --grid-line: rgba(190, 18, 60, 0.035);
-    --glow-orb: rgba(225, 29, 72, 0.06);
-    --shadow-card: rgba(190, 18, 60, 0.08);
+    --grid-line: rgba(147, 51, 234, 0.035);
+    --glow-orb: rgba(147, 51, 234, 0.07);
+    --shadow-card: rgba(126, 34, 206, 0.08);
+  }
+
+  /* Sepia Academic Paper Mode (Vintage Plum & Warm Parchment) */
+  html.sepia {
+    --bg-page: #fcf6ea;
+    --bg-header: rgba(252, 246, 234, 0.95);
+    --bg-sidebar: rgba(252, 246, 234, 0.98);
+    --bg-card: #f5ebd9;
+    --bg-card-hover: #efe2cc;
+    --bg-input: #f8efe0;
+    --bg-tag: rgba(126, 34, 206, 0.12);
+    --bg-code: #321927;
+    
+    --border-main: rgba(126, 34, 206, 0.22);
+    --border-hover: rgba(126, 34, 206, 0.55);
+    --border-subtle: rgba(70, 20, 110, 0.12);
+
+    --text-title: #281226;
+    --text-heading: #3a1a38;
+    --text-body: #4a2747;
+    --text-muted: #784874;
+    --text-subtle: #966892;
+    
+    --accent-crimson: #7e22ce;
+    --accent-gold: #0369a1;
+    --accent-blue: #4338ca;
+
+    --grid-line: rgba(126, 34, 206, 0.04);
+    --glow-orb: rgba(126, 34, 206, 0.08);
+    --shadow-card: rgba(74, 25, 70, 0.12);
   }
 
   body {
@@ -81,9 +111,23 @@
   }
 
   ::selection {
-    background: #e11d48;
+    background: #a855f7;
     color: #fff;
   }
+}
+
+/* Perspective & Floating Animation Utilities */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+@keyframes floatMath {
+  0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.15; }
+  50% { transform: translateY(-12px) rotate(3deg); opacity: 0.35; }
+}
+
+.animate-float-math {
+  animation: floatMath 8s ease-in-out infinite;
 }
 
 /* Outer Layout Shell */

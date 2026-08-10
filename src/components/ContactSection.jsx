@@ -18,12 +18,46 @@ export default function ContactSection() {
     }
   }, []);
 
+  const handleDownloadVCard = () => {
+    const vcardData = `BEGIN:VCARD
+VERSION:3.0
+FN:${AUTHOR_INFO.name}
+N:Kundu;Aurghyadip;;;
+TITLE:${AUTHOR_INFO.role}
+ORG:${AUTHOR_INFO.institution}
+EMAIL;TYPE=INTERNET,WORK:${AUTHOR_INFO.email}
+TEL;TYPE=CELL:${AUTHOR_INFO.phone}
+URL:${AUTHOR_INFO.github}
+NOTE:Assistant Professor of Computer Science & Engineering and Open Source Developer.
+END:VCARD`;
+
+    const blob = new Blob([vcardData], { type: 'text/vcard;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.setAttribute('download', `${AUTHOR_INFO.name.replace(/\s+/g, '_')}_Academic_Contact.vcf`);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
     <section id="contact" className="py-12 lg:py-16 px-6 sm:px-10 lg:px-12 border-none">
       {/* Eyebrow */}
-      <div className="flex items-center gap-2 font-mono text-xs text-[var(--accent-crimson)] tracking-widest uppercase mb-3 font-semibold">
-        <span className="w-2 h-2 rounded-full bg-[var(--accent-crimson)]"></span>
-        <span>Communication</span>
+      <div className="flex items-center justify-between gap-2 mb-3">
+        <div className="flex items-center gap-2 font-mono text-xs text-[var(--accent-crimson)] tracking-widest uppercase font-semibold">
+          <span className="w-2 h-2 rounded-full bg-[var(--accent-crimson)]"></span>
+          <span>Communication</span>
+        </div>
+
+        <button
+          onClick={handleDownloadVCard}
+          className="px-3 py-1.5 rounded-lg bg-[var(--bg-card)] border border-[var(--border-main)] hover:border-[var(--accent-crimson)] theme-body hover:text-[var(--accent-crimson)] font-mono text-xs flex items-center gap-1.5 transition-all duration-200 shadow-sm cursor-pointer"
+          title="Download contact details as .vcf file"
+        >
+          <Mail size={12} className="text-[var(--accent-crimson)]" />
+          <span>Save Contact (.vcf)</span>
+        </button>
       </div>
 
       <div className="relative rounded-2xl p-6 sm:p-10 bg-gradient-to-br from-[var(--bg-surface)] to-[var(--bg-page)] border border-[var(--border-main)] shadow-lg overflow-hidden">

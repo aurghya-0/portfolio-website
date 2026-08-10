@@ -155,38 +155,128 @@ export const COURSES = [
   {
     code: "CSE-302",
     name: "High Performance Computing",
+    level: "Advanced Undergraduate / Elective",
     desc: "Parallel computing paradigms, multi-threaded programming using OpenMP, distributed memory with MPI, and GPU acceleration with NVIDIA CUDA architectures.",
-    tags: ["C / C++", "OpenMP", "MPI", "CUDA"]
+    tags: ["C / C++", "OpenMP", "MPI", "CUDA"],
+    prerequisites: "Data Structures & Algorithms, Computer Architecture, C/C++ Programming",
+    labStack: "NVIDIA CUDA Toolkit, GCC/G++, OpenMPI, Linux HPC Clusters",
+    modules: [
+      "Module 1: Foundations of Parallel Computing & Flynn's Taxonomy",
+      "Module 2: Shared Memory Multi-threading with OpenMP Directives & Pragmas",
+      "Module 3: Distributed Memory Architecture & Message Passing Interface (MPI)",
+      "Module 4: Heterogeneous GPU Computing, CUDA Kernel Execution, Threads & Grids",
+      "Module 5: Performance Profiling, Memory Coalescing & Roofline Models"
+    ],
+    outcomes: [
+      "Design and implement scalable parallel algorithms using OpenMP and MPI",
+      "Develop high-throughput GPU kernels in NVIDIA CUDA",
+      "Analyze parallel speedup, efficiency, and Amdahl's Law metrics"
+    ]
   },
   {
     code: "CSE-101",
     name: "Python Programming & Data Systems",
+    level: "Core Undergraduate",
     desc: "Foundational data structures, object-oriented concepts, functional idioms, data analysis with NumPy/Pandas, and building modern web backends.",
-    tags: ["Python 3", "NumPy", "Pandas", "Jupyter"]
+    tags: ["Python 3", "NumPy", "Pandas", "Jupyter"],
+    prerequisites: "High School Mathematics & Fundamental Problem Solving",
+    labStack: "Python 3.11+, VS Code, Jupyter Notebooks, Conda / Pipenv",
+    modules: [
+      "Module 1: Control Flow, Functions, Lambdas & Comprehensions",
+      "Module 2: Object-Oriented Programming, Polymorphism & Metaclasses",
+      "Module 3: Vectorized Numerical Operations with NumPy Arrays",
+      "Module 4: Data Manipulation, Cleaning & Aggregation with Pandas DataFrames",
+      "Module 5: Automated File Handling, Regex & RESTful Web Service Integration"
+    ],
+    outcomes: [
+      "Write modular, pythonic code following PEP 8 guidelines",
+      "Analyze complex tabular datasets using Pandas and NumPy",
+      "Develop scripts for data automation and analytical reporting"
+    ]
   },
   {
     code: "CSE-401",
     name: "Data Warehousing & Mining",
+    level: "Core Senior Undergraduate",
     desc: "ETL pipelines, dimensional modeling, OLAP cubes, association rule mining, clustering, classification algorithms, and enterprise business intelligence.",
-    tags: ["SQL", "PostgreSQL", "Power BI", "Scikit-Learn"]
+    tags: ["SQL", "PostgreSQL", "Power BI", "Scikit-Learn"],
+    prerequisites: "Database Management Systems (DBMS), Basic Probability & Statistics",
+    labStack: "PostgreSQL, Python Scikit-Learn, Power BI Desktop, Jupyter",
+    modules: [
+      "Module 1: Data Warehouse Architectures, Star & Snowflake Schema Design",
+      "Module 2: Extract, Transform, Load (ETL) Data Pipelines & Data Cleaning",
+      "Module 3: Association Rule Mining (Apriori & FP-Growth Algorithms)",
+      "Module 4: Classification Models (Decision Trees, Naive Bayes, K-NN)",
+      "Module 5: Clustering Techniques (K-Means, DBSCAN) & Business Intelligence Dashboards"
+    ],
+    outcomes: [
+      "Construct enterprise dimensional models and OLAP cubes",
+      "Apply machine learning classification and clustering algorithms on real-world datasets",
+      "Build interactive BI executive dashboards in Power BI"
+    ]
   },
   {
     code: "CSE-202",
     name: "IoT Systems & Embedded Hardware",
+    level: "Core Intermediate",
     desc: "Sensor interfacing, microcontrollers, BLE/Wi-Fi communication protocols, edge analytics, and real-time cloud data pipelines.",
-    tags: ["NVIDIA Jetson", "ESP32", "MQTT", "BLE"]
+    tags: ["NVIDIA Jetson", "ESP32", "MQTT", "BLE"],
+    prerequisites: "Basic Circuit Theory, Digital Logic Design, C Programming",
+    labStack: "Arduino IDE, ESP32 Microcontrollers, NVIDIA Jetson Nano, MQTT Broker",
+    modules: [
+      "Module 1: Microcontroller Architecture, GPIO Pins, SPI & I2C Sensor Protocols",
+      "Module 2: Wireless Communication: Wi-Fi, Bluetooth Low Energy (BLE) & Zigbee",
+      "Module 3: Lightweight Messaging with MQTT & Edge Data Telemetry",
+      "Module 4: Edge AI Acceleration on NVIDIA Jetson Embedded Platforms",
+      "Module 5: IoT Security Fundamentals, Encryption & Cloud Integration"
+    ],
+    outcomes: [
+      "Interface physical analog/digital sensors with ESP32 microcontrollers",
+      "Implement real-time MQTT telemetry streaming to cloud dashboards",
+      "Deploy computer vision and ML models onto edge AI devices"
+    ]
   },
   {
     code: "CSE-305",
     name: "Software Engineering & Testing",
+    level: "Core Undergraduate",
     desc: "Agile & DevOps methodologies, UML architecture design, automated unit testing, CI/CD pipelines, and software quality assurance metrics.",
-    tags: ["Git", "Docker", "UML", "Agile / Scrum"]
+    tags: ["Git", "Docker", "UML", "Agile / Scrum"],
+    prerequisites: "Object-Oriented Programming (C++/Java/Python)",
+    labStack: "Git / GitHub, Docker, PyTest / JUnit, StarUML, Jira Workflow",
+    modules: [
+      "Module 1: Software Lifecycle Models: Waterfall vs Agile / Scrum Frameworks",
+      "Module 2: Requirements Analysis & Object-Oriented Modeling with UML",
+      "Module 3: System Design Architecture, Design Patterns & Refactoring",
+      "Module 4: Automated Testing: Unit, Integration & Regression Testing",
+      "Module 5: Continuous Integration / Continuous Deployment (CI/CD) & Dockerization"
+    ],
+    outcomes: [
+      "Design formal UML class, sequence, and activity diagrams",
+      "Implement automated test suites achieving high code coverage",
+      "Manage collaborative agile software projects using Git workflows"
+    ]
   },
   {
     code: "CSE-102",
     name: "C Programming & Research Methodology",
+    level: "Core Foundation",
     desc: "Procedural programming, pointer arithmetic, memory management, statistical analysis methods, and academic paper drafting in LaTeX/Typst.",
-    tags: ["ANSI C", "LaTeX", "Typst", "Research Ethics"]
+    tags: ["ANSI C", "LaTeX", "Typst", "Research Ethics"],
+    prerequisites: "None (Introductory Course)",
+    labStack: "GCC Compiler, GDB Debugger, Typst CLI, Overleaf / LaTeX",
+    modules: [
+      "Module 1: Procedural Fundamentals: Data Types, Control Loops & Functions",
+      "Module 2: Pointers, Dynamic Memory Allocation (malloc/free) & Memory Leaks",
+      "Module 3: Structs, Unions & Low-Level Binary File Processing",
+      "Module 4: Fundamentals of Academic Research, Literature Review & Hypothesis Testing",
+      "Module 5: Technical Typesetting with Typst & LaTeX for Research Papers"
+    ],
+    outcomes: [
+      "Master low-level pointer arithmetic and manual memory management in C",
+      "Draft publishable academic manuscripts using Typst and LaTeX",
+      "Conduct structured scientific literature reviews and ethical research design"
+    ]
   }
 ];
 
@@ -238,22 +328,60 @@ export const EXPERIENCE = [
 
 export const LEADERSHIP = [
   {
+    category: "Accreditation & Quality Assurance",
+    type: "Core Committee Member · 2024–Present",
+    icon: "award",
+    title: "Internal Quality Assurance Cell (IQAC)",
+    institution: "NSHM Knowledge Campus, Durgapur",
+    desc: "Member of institutional IQAC core committee driving Outcome-Based Education (OBE) compliance, NAAC accreditation benchmarks, and academic evaluation standards."
+  },
+  {
+    category: "Accreditation & Quality Assurance",
+    type: "Departmental Coordinator · 2023–2024",
+    icon: "file-check",
+    title: "NAAC Criteria 2 Accreditation Lead",
+    institution: "Parul University, Vadodara",
+    desc: "Departmental Lead for NAAC Criteria 2 (Teaching-Learning & Evaluation), preparing academic documentation, outcome metrics, and syllabus evaluation audits."
+  },
+  {
+    category: "Research & Lab Facilities",
+    type: "Institutional Coordinator · 2023–2024",
+    icon: "cpu",
+    title: "NVIDIA Jetson Collaborative Labs",
+    institution: "Parul University, Vadodara",
+    desc: "Institutional coordinator overseeing hardware deployment, student research initiatives, and edge AI projects in the NVIDIA Jetson Embedded Systems Lab."
+  },
+  {
+    category: "Academic Governance",
+    type: "Committee Member · 2023–2024",
+    icon: "shield-check",
+    title: "Academic Welfare Monitoring Committee",
+    institution: "Parul University, Vadodara",
+    desc: "Committee member monitoring student academic progression, curriculum feedback loops, and faculty-student welfare initiatives."
+  },
+  {
+    category: "Student Innovation & Coding Clubs",
+    type: "Faculty Advisor · Aug 2024–Present",
+    icon: "users",
+    title: "CodeNEST — Institutional Coding Club",
+    institution: "NSHM Knowledge Campus, Durgapur",
+    desc: "Faculty advisor organizing competitive programming hackathons, peer code reviews, and industry speaker sessions for undergraduate engineers."
+  },
+  {
+    category: "Student Innovation & Coding Clubs",
     type: "Founding Member · Nov 2024–Present",
     icon: "code",
     title: "Open Source Student Developers Club",
-    desc: "Founding member of a community helping undergraduate developers transition from tutorials to real open-source repository contributions and collaborative Git workflows."
+    institution: "NSHM Knowledge Campus, Durgapur",
+    desc: "Founding mentor helping undergraduate developers transition from tutorials to real open-source repository contributions and collaborative Git workflows."
   },
   {
-    type: "Faculty Advisor · Aug 2024–Present",
-    icon: "users",
-    title: "CodeNEST — Open Source Club of NSHM",
-    desc: "Faculty advisor for NSHM's institutional innovation and coding club, organizing hackathons, peer code reviews, and industry speaker sessions."
-  },
-  {
+    category: "Student Innovation & Coding Clubs",
     type: "Lead Member · Jan 2017–Jun 2018",
     icon: "google",
-    title: "Google Developers Student Club, CIEM",
-    desc: "Led student developer community at Calcutta Institute of Engineering & Management, organizing workshops, study jams, and campus tech events."
+    title: "Google Developer Student Club (GDSC)",
+    institution: "CIEM, Kolkata",
+    desc: "Led student developer community at Calcutta Institute of Engineering & Management, organizing technical workshops, study jams, and campus hackathons."
   }
 ];
 
@@ -346,9 +474,9 @@ export const SKILL_GROUPS = [
   {
     title: "Spoken Languages",
     skills: [
-      { name: "English (Native)", highlight: true },
-      { name: "German (Native)", highlight: true },
-      { name: "Japanese (Basic)", highlight: false }
+      { name: "English", highlight: true },
+      { name: "Hindi", highlight: true },
+      { name: "Bengali (Native)", highlight: true }
     ]
   },
   {

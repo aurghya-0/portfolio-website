@@ -11,11 +11,18 @@ import OpenSourceSection from './components/OpenSourceSection';
 import ToolkitSection from './components/ToolkitSection';
 import ContactSection from './components/ContactSection';
 import Toast from './components/Toast';
+import CommandPalette from './components/CommandPalette';
+import ScrollProgress from './components/ScrollProgress';
+import CourseModal from './components/CourseModal';
+import CvModal from './components/CvModal';
 
 export default function App() {
   const [activeSection, setActiveSection] = useState('orientation');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [toastMessage, setToastMessage] = useState('');
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [selectedCourse, setSelectedCourse] = useState(null);
+  const [isCvOpen, setIsCvOpen] = useState(false);
   const [theme, setTheme] = useState(() => {
     return localStorage.getItem('theme') || 'system';
   });
@@ -25,19 +32,17 @@ export default function App() {
     const root = document.documentElement;
 
     const applyTheme = () => {
-      let isDark = false;
-      if (theme === 'system') {
-        isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      } else {
-        isDark = theme === 'dark';
-      }
+      root.classList.remove('dark', 'light', 'sepia');
 
-      if (isDark) {
-        root.classList.add('dark');
-        root.classList.remove('light');
-      } else {
+      if (theme === 'sepia') {
+        root.classList.add('sepia');
+      } else if (theme === 'light') {
         root.classList.add('light');
-        root.classList.remove('dark');
+      } else if (theme === 'dark') {
+        root.classList.add('dark');
+      } else {
+        const isSystemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        root.classList.add(isSystemDark ? 'dark' : 'light');
       }
     };
 
@@ -53,6 +58,19 @@ export default function App() {
     mediaQuery.addEventListener('change', handleSystemChange);
     return () => mediaQuery.removeEventListener('change', handleSystemChange);
   }, [theme]);
+
+  // Keyboard shortcut listener for Spotlight Search (Cmd + K / Ctrl + K)
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+        e.preventDefault();
+        setIsSearchOpen((prev) => !prev);
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
 
   const handleThemeChange = (newTheme) => {
     setTheme(newTheme);
@@ -88,6 +106,7 @@ export default function App() {
 
   return (
     <div className="app-container relative">
+      <ScrollProgress />
       <div className="bg-grid-pattern fixed inset-0 pointer-events-none"></div>
 
       <MobileHeader 
@@ -104,13 +123,17 @@ export default function App() {
           closeMenu={() => setIsMenuOpen(false)} 
           theme={theme}
           onThemeChange={handleThemeChange}
+          onOpenCv={() => setIsCvOpen(true)}
         />
 
         <main>
-          <HeroSection />
+          <HeroSection 
+            onOpenSearch={() => setIsSearchOpen(true)} 
+            onOpenCv={() => setIsCvOpen(true)}
+          />
           <OrientationSection />
           <PublicationsSection onCopyBibtex={triggerToast} />
-          <TeachingSection />
+          <TeachingSection onSelectCourse={(course) => setSelectedCourse(course)} />
           <ExperienceSection />
           <LeadershipSection />
           <OpenSourceSection />
@@ -120,6 +143,9 @@ export default function App() {
       </div>
 
       <Toast message={toastMessage} />
+      <CommandPalette isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
+      <CourseModal course={selectedCourse} onClose={() => setSelectedCourse(null)} />
+      <CvModal isOpen={isCvOpen} onClose={() => setIsCvOpen(false)} />
     </div>
   );
 }

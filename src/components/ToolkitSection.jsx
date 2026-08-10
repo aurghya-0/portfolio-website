@@ -1,8 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { EDUCATION, SKILL_GROUPS, INTERESTS } from '../data/portfolioData';
-import { GraduationCap, Wrench, Award, Heart } from 'lucide-react';
+import { GraduationCap, Wrench, Award, Heart, Filter } from 'lucide-react';
 
 export default function ToolkitSection() {
+  const [selectedGroup, setSelectedGroup] = useState('all');
+
+  const categories = [
+    { id: 'all', label: 'All Stack' },
+    ...SKILL_GROUPS.map((group) => ({ id: group.title, label: group.title }))
+  ];
+
+  const filteredGroups = SKILL_GROUPS.filter(
+    (group) => selectedGroup === 'all' || group.title === selectedGroup
+  );
+
   return (
     <section id="toolkit" className="py-12 lg:py-16 px-6 sm:px-10 lg:px-12 border-b border-[var(--border-main)]">
       {/* Eyebrow */}
@@ -15,54 +26,98 @@ export default function ToolkitSection() {
         Academic Degrees & Technical Stack
       </h2>
 
-      <div className="grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] gap-8 items-start">
-        {/* Education Column */}
+      <div className="space-y-12">
+        {/* Top Block: Degrees & Credentials (Horizontal 2-Card Grid) */}
         <div>
-          <div className="font-mono text-xs tracking-wider uppercase text-[var(--accent-gold)] pb-2 mb-4 border-b border-[var(--border-main)] flex items-center gap-2 font-semibold">
+          <div className="font-mono text-xs tracking-wider uppercase text-[var(--accent-gold)] pb-2.5 mb-6 border-b border-[var(--border-main)] flex items-center gap-2 font-semibold">
             <GraduationCap size={15} className="text-[var(--accent-crimson)]" />
-            <span>Degrees & Credentials</span>
+            <span>Degrees & Academic Credentials</span>
           </div>
 
-          <div className="space-y-3">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {EDUCATION.map((edu, idx) => (
-              <div key={idx} className="glass-card p-4 rounded-xl">
-                <h4 className="font-['Newsreader'] text-base font-semibold theme-title mb-1">
-                  {edu.degree}
-                </h4>
-                <div className="text-xs theme-muted flex items-center gap-1.5 mb-1">
-                  <Award size={12} className="text-[var(--accent-gold)]" />
-                  <span>{edu.institution}</span>
+              <div key={idx} className="glass-card p-6 rounded-2xl border-l-4 border-l-[var(--accent-crimson)] flex flex-col justify-between space-y-3.5 transition-all hover:-translate-y-1">
+                <div className="space-y-2">
+                  <h3 className="font-semibold text-base sm:text-lg theme-title leading-snug">
+                    {edu.degree}
+                  </h3>
+                  <div className="text-xs theme-crimson font-medium flex items-center gap-1.5">
+                    <Award size={14} className="text-[var(--accent-gold)] shrink-0" />
+                    <span>{edu.institution}</span>
+                  </div>
                 </div>
-                <div className="text-[11px] theme-muted font-mono mb-1">{edu.period}</div>
-                <div className="text-xs font-semibold text-[var(--accent-crimson)] mb-1">{edu.gpa}</div>
-                <p className="text-[11px] theme-body leading-relaxed">{edu.courses}</p>
+
+                <div className="flex flex-wrap items-center gap-2.5 pt-1">
+                  <span className="font-mono text-xs theme-muted bg-[var(--bg-input)] px-3 py-1 rounded-md border border-[var(--border-main)] font-medium">
+                    {edu.period}
+                  </span>
+                  <span className="font-mono text-xs font-bold text-[var(--accent-crimson)] bg-[var(--bg-tag)] px-3 py-1 rounded-md border border-[var(--border-main)]">
+                    {edu.gpa}
+                  </span>
+                </div>
+
+                <p className="text-xs theme-body leading-relaxed pt-2 border-t border-[var(--border-main)]/60">
+                  <span className="font-semibold theme-title">Relevant Coursework:</span> {edu.courses}
+                </p>
               </div>
             ))}
           </div>
         </div>
 
-        {/* Skills Matrix Column */}
+        {/* Bottom Block: Technical & Research Stack (Full Width) */}
         <div>
-          <div className="font-mono text-xs tracking-wider uppercase text-[var(--accent-gold)] pb-2 mb-4 border-b border-[var(--border-main)] flex items-center gap-2 font-semibold">
-            <Wrench size={15} className="text-[var(--accent-crimson)]" />
-            <span>Technical & Research Stack</span>
+          <div className="font-mono text-xs tracking-wider uppercase text-[var(--accent-gold)] pb-2.5 mb-6 border-b border-[var(--border-main)] flex items-center justify-between font-semibold">
+            <div className="flex items-center gap-2">
+              <Wrench size={15} className="text-[var(--accent-crimson)]" />
+              <span>Technical & Research Stack</span>
+            </div>
+            <Filter size={13} className="theme-muted" />
           </div>
 
-          <div className="space-y-5">
-            {SKILL_GROUPS.map((group, idx) => (
-              <div key={idx}>
-                <div className="text-xs theme-muted font-medium mb-2">
-                  {group.title}
+          {/* Skill Matrix Filter Pills */}
+          <div className="flex flex-wrap gap-2.5 mb-8">
+            {categories.map((cat) => (
+              <button
+                key={cat.id}
+                onClick={() => setSelectedGroup(cat.id)}
+                className={`
+                  px-3.5 py-1.5 rounded-xl font-mono text-xs transition-all duration-200 cursor-pointer shadow-sm
+                  ${selectedGroup === cat.id
+                    ? 'bg-gradient-to-r from-[var(--accent-crimson)] to-purple-600 text-white font-bold'
+                    : 'bg-[var(--bg-card)] theme-body border border-[var(--border-main)] hover:border-[var(--accent-crimson)] hover:text-[var(--accent-crimson)]'}
+                `}
+              >
+                {cat.label}
+              </button>
+            ))}
+          </div>
+
+          {/* Distinct Glass Cards for Skill Groups */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+            {filteredGroups.map((group, idx) => (
+              <div 
+                key={idx} 
+                className="glass-card p-5 rounded-2xl border border-[var(--border-main)] hover:border-[var(--accent-crimson)] transition-all duration-300 flex flex-col justify-start space-y-3"
+              >
+                <div className="text-xs font-mono font-bold theme-crimson uppercase tracking-wider flex items-center justify-between pb-2 border-b border-[var(--border-main)] shrink-0">
+                  <span className="flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent-crimson)]"></span>
+                    <span>{group.title}</span>
+                  </span>
+                  <span className="text-[10px] theme-muted font-mono bg-[var(--bg-input)] px-2 py-0.5 rounded border border-[var(--border-main)]">
+                    {group.skills.length} skills
+                  </span>
                 </div>
-                <div className="flex flex-wrap gap-1.5">
+
+                <div className="flex flex-wrap items-start content-start gap-2">
                   {group.skills.map((skill, skillIdx) => (
                     <span 
                       key={skillIdx}
                       className={`
-                        font-sans text-xs px-2.5 py-1 rounded-lg border transition-all duration-200
+                        font-sans text-xs px-3 py-1.5 rounded-xl border transition-all duration-200
                         ${skill.highlight 
-                          ? 'bg-[var(--bg-tag)] border-[var(--accent-crimson)] text-[var(--accent-crimson)] font-semibold shadow-sm' 
-                          : 'bg-[var(--bg-input)] theme-body border-[var(--border-main)] hover:border-[var(--accent-crimson)]'}
+                          ? 'bg-[var(--bg-tag)] border-[var(--accent-crimson)] text-[var(--accent-crimson)] font-semibold shadow-sm hover:scale-105' 
+                          : 'bg-[var(--bg-input)] theme-body border-[var(--border-main)] hover:border-[var(--accent-crimson)] hover:text-[var(--accent-crimson)]'}
                       `}
                     >
                       {skill.name}
@@ -73,16 +128,17 @@ export default function ToolkitSection() {
             ))}
           </div>
 
-          <div className="mt-6">
-            <div className="text-xs theme-muted font-medium mb-2 flex items-center gap-1.5">
-              <Heart size={12} className="text-[var(--accent-crimson)]" />
-              <span>Interests</span>
+          {/* Academic & Personal Interests Card */}
+          <div className="glass-card p-5 rounded-2xl border border-[var(--border-main)] mt-6">
+            <div className="text-xs font-mono font-bold theme-gold uppercase tracking-wider mb-3 flex items-center gap-2 pb-2 border-b border-[var(--border-main)]">
+              <Heart size={14} className="text-[var(--accent-crimson)]" />
+              <span>Academic & Personal Interests</span>
             </div>
-            <div className="flex flex-wrap gap-1.5">
+            <div className="flex flex-wrap gap-2 pt-1">
               {INTERESTS.map((interest, idx) => (
                 <span
                   key={idx}
-                  className="font-sans text-xs px-2.5 py-1 rounded-lg border bg-[var(--bg-input)] theme-body border-[var(--border-main)]"
+                  className="font-sans text-xs px-3 py-1.5 rounded-xl border bg-[var(--bg-input)] theme-body border-[var(--border-main)]"
                 >
                   {interest}
                 </span>

@@ -25,44 +25,54 @@ export default function OrientationSection() {
         Academic Profile & Research Pillars
       </h2>
 
-      <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-8 items-start">
-        {/* Bio & Research Pillars */}
-        <div className="space-y-5">
-          <p className="font-['Newsreader'] text-lg sm:text-xl theme-heading leading-relaxed">
-            I am an Assistant Professor and Open Source Developer in the Department of Computer Science & Engineering at NSHM Knowledge Campus, Durgapur, with 4+ years of academic experience across CSE and IT departments.
-          </p>
-          <p className="text-xs sm:text-sm theme-body leading-relaxed font-sans">
-            I specialize in Python, DSA/DAA, Software Engineering, and C Programming, with active contributions to curriculum design, academic coordination, and innovation-driven student communities such as CodeNEST and the Open Source Student Developers Club.
-          </p>
+      {/* Academic Mission & Vision Statements */}
+      <div className="max-w-3xl space-y-4 mb-10">
+        <p className="font-['Newsreader'] text-xl sm:text-2xl theme-heading leading-relaxed font-medium">
+          My academic mission sits at the intersection of high-performance computing, open-source software engineering, and applied artificial intelligence—bridging theoretical computer science with maintainable, real-world systems.
+        </p>
+        <p className="text-xs sm:text-sm theme-body leading-relaxed font-sans">
+          Through rigorous course instruction, Outcome-Based Education (OBE) curriculum design, and student innovation club advisorship, I focus on building production-grade computational skills. My research spans parallel algorithm optimization, financial risk modeling, edge IoT telemetry, and open-source academic tools.
+        </p>
+      </div>
 
-          {/* 4 Core Research Pillars Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 pt-2">
+      {/* Balanced 2-Column Grid: Research Pillars (Left) vs Key Metrics (Right) */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-stretch">
+        {/* 4 Core Research Pillars Grid */}
+        <div className="flex flex-col justify-between space-y-3.5">
+          <div className="font-mono text-xs tracking-wider uppercase text-[var(--accent-gold)] pb-2 border-b border-[var(--border-main)] flex items-center gap-2 font-semibold">
+            <Cpu size={15} className="text-[var(--accent-crimson)]" />
+            <span>Research Pillars</span>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 h-full">
             {RESEARCH_PILLARS.map((pillar) => (
               <div 
                 key={pillar.id}
-                className="glass-card p-4 rounded-xl transition-all duration-300 hover:-translate-y-1 group"
+                className="glass-card p-4 rounded-xl flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 group"
               >
-                {getPillarIcon(pillar.icon)}
-                <h3 className="font-semibold theme-title text-sm mb-1 group-hover:text-[var(--accent-crimson)] transition-colors">
-                  {pillar.title}
-                </h3>
-                <p className="text-xs theme-muted leading-relaxed">
-                  {pillar.desc}
-                </p>
+                <div>
+                  {getPillarIcon(pillar.icon)}
+                  <h3 className="font-semibold theme-title text-sm mb-1 group-hover:text-[var(--accent-crimson)] transition-colors">
+                    {pillar.title}
+                  </h3>
+                  <p className="text-xs theme-muted leading-relaxed">
+                    {pillar.desc}
+                  </p>
+                </div>
               </div>
             ))}
           </div>
         </div>
 
         {/* Key Metrics Facts Table Card */}
-        <div>
-          <div className="glass-card p-5 rounded-xl border border-[var(--border-main)]">
-            <div className="font-mono text-xs tracking-wider uppercase text-[var(--accent-gold)] pb-2.5 mb-3 border-b border-[var(--border-main)] flex items-center gap-2 font-semibold">
-              <Contact size={15} className="text-[var(--accent-crimson)]" />
-              <span>Key Academic Metrics</span>
-            </div>
+        <div className="flex flex-col justify-between">
+          <div className="font-mono text-xs tracking-wider uppercase text-[var(--accent-gold)] pb-2 border-b border-[var(--border-main)] flex items-center gap-2 font-semibold">
+            <Contact size={15} className="text-[var(--accent-crimson)]" />
+            <span>Key Academic Metrics</span>
+          </div>
 
-            <div className="divide-y divide-[var(--border-main)]">
+          <div className="glass-card p-5 rounded-xl border border-[var(--border-main)] h-full flex flex-col justify-between">
+            <div className="divide-y divide-[var(--border-main)] my-auto">
               {KEY_METRICS.map((fact, idx) => (
                 <div key={idx} className="py-2.5 flex justify-between items-center gap-3 text-xs">
                   <span className="theme-muted">{fact.key}</span>
