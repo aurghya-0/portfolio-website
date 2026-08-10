@@ -1,6 +1,6 @@
 import React from 'react';
 import { RESEARCH_PILLARS, KEY_METRICS } from '../data/portfolioData';
-import { Cpu, TrendingUp, Activity, GitBranch, Contact } from 'lucide-react';
+import { Cpu, TrendingUp, Activity, GitBranch, Contact, Sparkles, Award, BookOpen, ShieldCheck } from 'lucide-react';
 
 export default function OrientationSection() {
   const getPillarIcon = (iconName) => {
@@ -15,24 +15,62 @@ export default function OrientationSection() {
 
   return (
     <section className="py-12 lg:py-16 px-6 sm:px-10 lg:px-12 border-b border-[var(--border-main)]">
-      {/* Section Eyebrow */}
-      <div className="flex items-center gap-2 font-mono text-xs text-[var(--accent-crimson)] tracking-widest uppercase mb-3 font-semibold">
-        <span className="w-2 h-2 rounded-full bg-[var(--accent-crimson)]"></span>
-        <span>Orientation & Overview</span>
-      </div>
+      {/* Header Block Split into 2 Balanced Columns */}
+      <div className="grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-8 items-start mb-10">
+        {/* Left Column: Title & Mission */}
+        <div className="space-y-3.5">
+          <div>
+            <div className="flex items-center gap-2 font-mono text-xs text-[var(--accent-crimson)] tracking-widest uppercase mb-2 font-semibold">
+              <span className="w-2 h-2 rounded-full bg-[var(--accent-crimson)]"></span>
+              <span>Orientation & Overview</span>
+            </div>
+            <h2 className="font-['Cinzel'] text-2xl sm:text-3xl font-bold theme-title tracking-tight">
+              Academic Profile & Research Pillars
+            </h2>
+          </div>
 
-      <h2 className="font-['Cinzel'] text-2xl sm:text-3xl font-bold theme-title mb-8 tracking-tight">
-        Academic Profile & Research Pillars
-      </h2>
+          <p className="text-base sm:text-lg theme-title leading-relaxed font-semibold font-sans border-l-2 border-[var(--accent-crimson)] pl-3.5">
+            My academic mission sits at the intersection of high-performance computing, open-source software engineering, and applied artificial intelligence—bridging theoretical computer science with maintainable, real-world systems.
+          </p>
 
-      {/* Academic Mission & Vision Statements */}
-      <div className="max-w-3xl space-y-4 mb-10">
-        <p className="font-['Newsreader'] text-xl sm:text-2xl theme-heading leading-relaxed font-medium">
-          My academic mission sits at the intersection of high-performance computing, open-source software engineering, and applied artificial intelligence—bridging theoretical computer science with maintainable, real-world systems.
-        </p>
-        <p className="text-xs sm:text-sm theme-body leading-relaxed font-sans">
-          Through rigorous course instruction, Outcome-Based Education (OBE) curriculum design, and student innovation club advisorship, I focus on building production-grade computational skills. My research spans parallel algorithm optimization, financial risk modeling, edge IoT telemetry, and open-source academic tools.
-        </p>
+          <p className="text-xs sm:text-sm theme-muted leading-relaxed font-sans">
+            Through rigorous course instruction, Outcome-Based Education (OBE) curriculum design, and student innovation club advisorship, I focus on building production-grade computational skills. My research spans parallel algorithm optimization, financial risk modeling, edge IoT telemetry, and open-source academic tools.
+          </p>
+        </div>
+
+        {/* Right Column: Academic Highlights Card (Tight & Perfectly Spaced) */}
+        <div className="glass-card p-4 sm:p-5 rounded-2xl border border-[var(--border-main)] space-y-3 bg-[var(--bg-card)]/50 backdrop-blur-md">
+          <div className="font-mono text-xs text-[var(--accent-gold)] uppercase tracking-wider font-bold pb-2 border-b border-[var(--border-main)] flex items-center gap-2">
+            <Sparkles size={14} className="text-[var(--accent-crimson)]" />
+            <span>Academic Highlights</span>
+          </div>
+
+          <div className="space-y-2.5">
+            <div className="p-2.5 sm:p-3 rounded-xl bg-[var(--bg-tag)] border border-[var(--border-main)] text-xs flex items-center gap-3">
+              <ShieldCheck size={16} className="text-[var(--accent-crimson)] shrink-0" />
+              <div>
+                <div className="font-bold theme-title">OBE & NAAC Lead</div>
+                <div className="text-[11px] theme-muted font-mono">Criteria 2 Accreditation</div>
+              </div>
+            </div>
+
+            <div className="p-2.5 sm:p-3 rounded-xl bg-[var(--bg-tag)] border border-[var(--border-main)] text-xs flex items-center gap-3">
+              <BookOpen size={16} className="text-cyan-400 shrink-0" />
+              <div>
+                <div className="font-bold theme-title">CTAN & Typst Author</div>
+                <div className="text-[11px] theme-muted font-mono">Global Open Source Packages</div>
+              </div>
+            </div>
+
+            <div className="p-2.5 sm:p-3 rounded-xl bg-[var(--bg-tag)] border border-[var(--border-main)] text-xs flex items-center gap-3">
+              <Cpu size={16} className="text-purple-400 shrink-0" />
+              <div>
+                <div className="font-bold theme-title">NVIDIA Jetson AI Lab</div>
+                <div className="text-[11px] theme-muted font-mono">Edge Computing Lead</div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
       {/* Balanced 2-Column Grid: Research Pillars (Left) vs Key Metrics (Right) */}

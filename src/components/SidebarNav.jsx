@@ -1,9 +1,9 @@
 import React from 'react';
 import { AUTHOR_INFO, SYLLABUS_NAV } from '../data/portfolioData';
-import { BookOpen, MapPin, Award } from 'lucide-react';
+import { BookOpen, MapPin, Award, Tv } from 'lucide-react';
 import ThemeToggle from './ThemeToggle';
 
-export default function SidebarNav({ activeSection, isOpen, closeMenu, theme, onThemeChange, onOpenCv }) {
+export default function SidebarNav({ activeSection, isOpen, closeMenu, theme, onThemeChange, onOpenPresentation }) {
   const handleNavClick = (id) => {
     closeMenu();
     const element = document.getElementById(id);
@@ -76,6 +76,17 @@ export default function SidebarNav({ activeSection, isOpen, closeMenu, theme, on
 
         {/* Sidebar Footer with Theme Switcher */}
         <div className="pt-4 border-t border-[var(--border-main)] font-mono text-[11px] theme-muted space-y-3">
+          {onOpenPresentation && (
+            <button
+              onClick={onOpenPresentation}
+              className="w-full py-2 px-3 rounded-lg bg-[var(--bg-tag)] border border-[var(--border-main)] hover:border-[var(--accent-crimson)] theme-crimson font-mono text-xs font-semibold flex items-center justify-center gap-1.5 transition-all shadow-sm cursor-pointer group"
+              title="Open Keynote Presentation Mode"
+            >
+              <Tv size={13} className="group-hover:scale-110 transition-transform" />
+              <span>Presentation Mode</span>
+            </button>
+          )}
+          
           <div className="flex flex-col gap-1.5">
             <span className="text-[10px] uppercase tracking-wider theme-muted font-semibold">Theme</span>
             <ThemeToggle theme={theme} onThemeChange={onThemeChange} />

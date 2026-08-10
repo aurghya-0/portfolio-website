@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { AUTHOR_INFO, QUICK_STATS } from '../data/portfolioData';
-import { Scroll, Mail, ExternalLink, Search, Command, BookOpen, Package, Briefcase, Award } from 'lucide-react';
+import { Scroll, Mail, ExternalLink, Search, Command, BookOpen, Package, Briefcase, Award, Tv } from 'lucide-react';
 
-export default function HeroSection({ onOpenSearch, onOpenCv }) {
+export default function HeroSection({ onOpenSearch, onOpenPresentation }) {
   const [tilt, setTilt] = useState({ x: 0, y: 0 });
 
   const scrollTo = (id) => {
@@ -135,6 +135,17 @@ export default function HeroSection({ onOpenSearch, onOpenCv }) {
                 <Scroll size={15} />
                 <span>Research Publications</span>
               </button>
+
+              {onOpenPresentation && (
+                <button 
+                  onClick={onOpenPresentation}
+                  className="px-4 py-2.5 rounded-xl bg-[var(--bg-card)] border border-[var(--border-main)] hover:border-[var(--accent-crimson)] theme-crimson font-mono text-xs font-bold flex items-center gap-2 transition-all duration-200 active:scale-95 cursor-pointer shadow-sm group"
+                  title="Open Keynote Presentation Mode"
+                >
+                  <Tv size={15} className="group-hover:scale-110 transition-transform" />
+                  <span>Presentation Mode</span>
+                </button>
+              )}
 
               <button 
                 onClick={() => scrollTo('contact')}

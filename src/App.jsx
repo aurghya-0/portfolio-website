@@ -15,6 +15,7 @@ import CommandPalette from './components/CommandPalette';
 import ScrollProgress from './components/ScrollProgress';
 import CourseModal from './components/CourseModal';
 import CvModal from './components/CvModal';
+import PresentationModal from './components/PresentationModal';
 
 export default function App() {
   const [activeSection, setActiveSection] = useState('orientation');
@@ -23,6 +24,7 @@ export default function App() {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [selectedCourse, setSelectedCourse] = useState(null);
   const [isCvOpen, setIsCvOpen] = useState(false);
+  const [isPresentationOpen, setIsPresentationOpen] = useState(false);
   const [theme, setTheme] = useState(() => {
     return localStorage.getItem('theme') || 'system';
   });
@@ -59,12 +61,15 @@ export default function App() {
     return () => mediaQuery.removeEventListener('change', handleSystemChange);
   }, [theme]);
 
-  // Keyboard shortcut listener for Spotlight Search (Cmd + K / Ctrl + K)
+  // Keyboard shortcut listener for Spotlight Search (Cmd + K) and Presentation Mode (Cmd + Shift + P)
   useEffect(() => {
     const handleKeyDown = (e) => {
       if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
         e.preventDefault();
         setIsSearchOpen((prev) => !prev);
+      } else if ((e.metaKey || e.ctrlKey) && e.shiftKey && (e.key === 'p' || e.key === 'P')) {
+        e.preventDefault();
+        setIsPresentationOpen((prev) => !prev);
       }
     };
 
@@ -123,13 +128,13 @@ export default function App() {
           closeMenu={() => setIsMenuOpen(false)} 
           theme={theme}
           onThemeChange={handleThemeChange}
-          onOpenCv={() => setIsCvOpen(true)}
+          onOpenPresentation={() => setIsPresentationOpen(true)}
         />
 
         <main>
           <HeroSection 
             onOpenSearch={() => setIsSearchOpen(true)} 
-            onOpenCv={() => setIsCvOpen(true)}
+            onOpenPresentation={() => setIsPresentationOpen(true)}
           />
           <OrientationSection />
           <PublicationsSection onCopyBibtex={triggerToast} />
@@ -146,6 +151,12 @@ export default function App() {
       <CommandPalette isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
       <CourseModal course={selectedCourse} onClose={() => setSelectedCourse(null)} />
       <CvModal isOpen={isCvOpen} onClose={() => setIsCvOpen(false)} />
+      <PresentationModal 
+        isOpen={isPresentationOpen} 
+        onClose={() => setIsPresentationOpen(false)} 
+        theme={theme}
+        onThemeChange={handleThemeChange}
+      />
     </div>
   );
 }
