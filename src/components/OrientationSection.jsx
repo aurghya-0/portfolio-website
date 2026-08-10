@@ -109,12 +109,12 @@ export default function OrientationSection() {
             <span>Key Academic Metrics</span>
           </div>
 
-          <div className="glass-card p-5 rounded-xl border border-[var(--border-main)] h-full flex flex-col justify-between">
-            <div className="divide-y divide-[var(--border-main)] my-auto">
+          <div className="glass-card p-5 sm:p-6 rounded-xl border border-[var(--border-main)] h-full flex flex-col justify-between">
+            <div className="divide-y divide-[var(--border-main)] flex flex-col justify-between h-full">
               {KEY_METRICS.map((fact, idx) => (
-                <div key={idx} className="py-2.5 flex justify-between items-center gap-3 text-xs">
-                  <span className="theme-muted">{fact.key}</span>
-                  <span className={`font-medium text-right ${fact.highlight ? 'font-mono text-[var(--accent-crimson)] font-bold bg-[var(--bg-tag)] px-2 py-0.5 rounded border border-[var(--border-main)]' : 'theme-heading'}`}>
+                <div key={idx} className="py-3 flex justify-between items-center gap-3 text-xs sm:text-sm my-auto">
+                  <span className="theme-muted font-medium">{fact.key}</span>
+                  <span className={`font-semibold text-right ${fact.highlight ? 'font-mono text-[var(--accent-crimson)] font-bold bg-[var(--bg-tag)] px-2.5 py-1 rounded-lg border border-[var(--border-main)]' : 'theme-heading'}`}>
                     {fact.val}
                   </span>
                 </div>
