@@ -4,7 +4,7 @@ export const AUTHOR_INFO = {
   department: "Computer Science & Engineering",
   institution: "NSHM Knowledge Campus, Durgapur",
   location: "Durgapur, WB, India",
-  email: "adkundu@gmail.com",
+  email: "aurghyadipk@yahoo.com",
   phone: "+91 8240461858",
   github: "https://github.com/aurghya-0",
   linkedin: "https://linkedin.com/in/aurghyadip-kundu",
@@ -437,6 +437,13 @@ export const OPEN_SOURCE = [
 ];
 
 export const PROJECTS = [
+  {
+    name: "SyncTask — Smart Android Task Manager",
+    period: "2026 — Present",
+    type: "Android Application (Play Store)",
+    desc: "Modern offline-first task management application for Android built with Kotlin & Jetpack Compose. Features cloud sync, smart reminders, custom tags, and focus analytics.",
+    url: "/synctask/"
+  },
   {
     name: "typstcode",
     period: "2026 — Present",

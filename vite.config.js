@@ -1,3 +1,4 @@
+import { resolve } from 'path';
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import tailwindcss from '@tailwindcss/vite';
@@ -10,5 +11,13 @@ export default defineConfig({
   ],
   build: {
     outDir: 'docs',
+    rollupOptions: {
+      input: {
+        main: resolve(__dirname, 'index.html'),
+        synctask: resolve(__dirname, 'synctask/index.html'),
+        synctaskPrivacy: resolve(__dirname, 'synctask/privacy/index.html'),
+      },
+    },
   },
 });
+
