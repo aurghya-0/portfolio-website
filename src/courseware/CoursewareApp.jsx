@@ -173,8 +173,8 @@ export default function CoursewareApp() {
               )}
             </div>
 
-            {/* Category Filter Pills */}
-            <div className="flex items-center gap-2 overflow-x-auto max-w-full pb-1 lg:pb-0">
+            {/* Category Filter Pills (Clean Wrapping & No Scrollbars) */}
+            <div className="flex flex-wrap items-center gap-2 max-w-full no-scrollbar">
               {categories.map((cat) => (
                 <button
                   key={cat}

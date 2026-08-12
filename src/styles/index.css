@@ -12,6 +12,14 @@
     scroll-behavior: smooth;
   }
 
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
   /* Dark Mode (Royal Amethyst & Electric Violet) */
   html.dark {
     --bg-page: #0b0713;
