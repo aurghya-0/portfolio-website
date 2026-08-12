@@ -60,17 +60,17 @@ export default function CoursewareSection({ onSelectSite }) {
         ))}
       </div>
 
-      {/* Courseware Mini-Websites Cards Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-stretch">
+      {/* Courseware Mini-Websites Cards Grid (Sleek & Compact) */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 items-stretch">
         {filteredSites.map((site) => (
           <div
             key={site.id}
-            className="glass-card p-6 rounded-2xl border border-[var(--border-main)] hover:border-[var(--accent-crimson)]/50 transition-all duration-300 flex flex-col justify-between group shadow-sm hover:shadow-xl"
+            className="glass-card p-5 sm:p-6 rounded-2xl border border-[var(--border-main)] hover:border-[var(--accent-crimson)]/50 transition-all duration-300 flex flex-col justify-between group shadow-sm hover:shadow-xl"
           >
             <div>
               {/* Header Badge Row */}
-              <div className="flex items-center justify-between gap-3 mb-3">
-                <span className="px-2.5 py-1 rounded-md bg-[var(--bg-tag)] border border-[var(--border-main)] text-[var(--accent-crimson)] font-mono text-[10px] font-bold uppercase tracking-wider">
+              <div className="flex items-center justify-between gap-3 mb-2.5">
+                <span className="px-2.5 py-0.5 rounded-md bg-[var(--bg-tag)] border border-[var(--border-main)] text-[var(--accent-crimson)] font-mono text-[10px] font-bold uppercase tracking-wider">
                   {site.badge}
                 </span>
                 <span className="font-mono text-xs font-bold theme-gold bg-purple-500/10 px-2.5 py-0.5 rounded border border-purple-500/20">
@@ -79,33 +79,19 @@ export default function CoursewareSection({ onSelectSite }) {
               </div>
 
               {/* Title & Subtitle */}
-              <h3 className="font-['Cinzel'] font-bold text-lg sm:text-xl theme-title mb-1 group-hover:text-[var(--accent-crimson)] transition-colors leading-tight">
+              <h3 className="font-['Cinzel'] font-bold text-base sm:text-lg theme-title mb-0.5 group-hover:text-[var(--accent-crimson)] transition-colors leading-tight">
                 {site.title}
               </h3>
-              <p className="text-xs font-mono text-[var(--accent-crimson)] mb-3 font-semibold">
+              <p className="text-[11px] sm:text-xs font-mono text-[var(--accent-crimson)] mb-2.5 font-semibold">
                 {site.subtitle}
               </p>
 
-              <p className="text-xs sm:text-sm theme-body leading-relaxed mb-4 font-sans">
+              <p className="text-xs theme-muted leading-relaxed mb-4 font-sans line-clamp-3">
                 {site.desc}
               </p>
 
-              {/* Key Features List */}
-              <div className="space-y-1.5 mb-5 pt-3 border-t border-[var(--border-main)]">
-                <div className="text-[11px] font-mono uppercase tracking-wider text-[var(--accent-gold)] font-bold mb-1 flex items-center gap-1.5">
-                  <Sparkles size={13} className="text-[var(--accent-crimson)]" />
-                  <span>Key Portal Features</span>
-                </div>
-                {site.features.slice(0, 3).map((feat, fIdx) => (
-                  <div key={fIdx} className="flex items-start gap-2 text-xs theme-muted">
-                    <span className="text-[var(--accent-crimson)] font-bold shrink-0 mt-0.5">•</span>
-                    <span className="leading-snug">{feat}</span>
-                  </div>
-                ))}
-              </div>
-
               {/* Tech Stack Pills */}
-              <div className="flex flex-wrap gap-1.5 mb-6">
+              <div className="flex flex-wrap gap-1.5 mb-5">
                 {site.techStack.map((tech, tIdx) => (
                   <span
                     key={tIdx}
@@ -118,36 +104,36 @@ export default function CoursewareSection({ onSelectSite }) {
             </div>
 
             {/* Action Footer Buttons */}
-            <div className="pt-4 border-t border-[var(--border-main)] flex flex-wrap items-center justify-between gap-3">
+            <div className="pt-3 border-t border-[var(--border-main)] flex items-center justify-between gap-2">
               <div className="flex items-center gap-2">
                 <a
                   href={site.liveUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-3.5 py-2 rounded-xl bg-gradient-to-r from-[var(--accent-crimson)] to-rose-600 hover:opacity-90 text-white font-mono text-xs font-bold flex items-center gap-1.5 shadow-md transition-all active:scale-95 cursor-pointer"
+                  className="px-3 py-1.5 rounded-xl bg-gradient-to-r from-[var(--accent-crimson)] to-rose-600 hover:opacity-90 text-white font-mono text-xs font-bold flex items-center gap-1 shadow-sm transition-all active:scale-95 cursor-pointer"
                 >
-                  <Globe size={14} />
-                  <span>Visit Mini-Website</span>
-                  <ExternalLink size={12} className="opacity-80" />
+                  <Globe size={13} />
+                  <span>Visit Site</span>
+                  <ExternalLink size={11} className="opacity-80" />
                 </a>
 
                 <a
                   href={site.githubUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2 rounded-xl bg-[var(--bg-card)] border border-[var(--border-main)] hover:border-[var(--accent-crimson)] theme-heading hover:text-[var(--accent-crimson)] transition-all cursor-pointer shadow-xs"
+                  className="p-1.5 rounded-xl bg-[var(--bg-card)] border border-[var(--border-main)] hover:border-[var(--accent-crimson)] theme-heading hover:text-[var(--accent-crimson)] transition-all cursor-pointer shadow-xs"
                   title="View GitHub Repository"
                 >
-                  <Github size={15} />
+                  <Github size={14} />
                 </a>
               </div>
 
               <button
                 onClick={() => onSelectSite(site)}
-                className="px-3 py-1.5 rounded-xl bg-[var(--bg-tag)] hover:bg-[var(--bg-input)] border border-[var(--border-main)] theme-title text-xs font-mono font-semibold flex items-center gap-1.5 transition-all cursor-pointer group/btn"
+                className="px-3 py-1.5 rounded-xl bg-[var(--bg-tag)] hover:bg-[var(--bg-input)] border border-[var(--border-main)] theme-title text-xs font-mono font-semibold flex items-center gap-1 transition-all cursor-pointer group/btn"
               >
                 <span>Details</span>
-                <ChevronRight size={14} className="group-hover/btn:translate-x-0.5 transition-transform text-[var(--accent-crimson)]" />
+                <ChevronRight size={13} className="group-hover/btn:translate-x-0.5 transition-transform text-[var(--accent-crimson)]" />
               </button>
             </div>
           </div>

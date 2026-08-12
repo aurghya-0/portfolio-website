@@ -150,23 +150,23 @@ export default function CoursewareApp() {
         </div>
 
         {/* Search & Category Filter Controls Bar */}
-        <div className="space-y-4">
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="glass-card p-4 sm:p-5 rounded-2xl border border-[var(--border-main)] space-y-4">
+          <div className="flex flex-col lg:flex-row items-center justify-between gap-4">
             
             {/* Search Input Box */}
-            <div className="relative w-full sm:w-80">
+            <div className="relative w-full lg:w-96">
               <Search size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[var(--accent-crimson)]" />
               <input
                 type="text"
-                placeholder="Search course code, topic..."
+                placeholder="Search portal, course code, tech..."
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
-                className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-[var(--bg-card)] border border-[var(--border-main)] focus:border-[var(--accent-crimson)] theme-title text-xs font-mono outline-none transition-all shadow-xs"
+                className="w-full pl-10 pr-14 py-2.5 rounded-xl bg-[var(--bg-tag)] border border-[var(--border-main)] focus:border-[var(--accent-crimson)] theme-title text-xs font-mono outline-none transition-all shadow-xs"
               />
               {query && (
                 <button
                   onClick={() => setQuery('')}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 theme-muted hover:theme-title text-xs"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 font-mono text-[11px] text-[var(--accent-crimson)] hover:underline font-bold"
                 >
                   Clear
                 </button>
@@ -174,16 +174,16 @@ export default function CoursewareApp() {
             </div>
 
             {/* Category Filter Pills */}
-            <div className="flex flex-wrap items-center gap-2 overflow-x-auto max-w-full pb-1 sm:pb-0">
+            <div className="flex items-center gap-2 overflow-x-auto max-w-full pb-1 lg:pb-0">
               {categories.map((cat) => (
                 <button
                   key={cat}
                   onClick={() => setSelectedCategory(cat)}
                   className={`
-                    px-3.5 py-2 rounded-xl font-mono text-xs font-semibold transition-all duration-200 cursor-pointer border whitespace-nowrap
+                    px-3.5 py-2 rounded-xl font-mono text-xs font-semibold transition-all duration-200 cursor-pointer border whitespace-nowrap shrink-0
                     ${selectedCategory === cat
                       ? 'bg-[var(--accent-crimson)] text-white border-[var(--accent-crimson)] shadow-md shadow-purple-900/20'
-                      : 'bg-[var(--bg-card)] theme-muted border-[var(--border-main)] hover:border-[var(--accent-crimson)] hover:text-[var(--accent-crimson)]'}
+                      : 'bg-[var(--bg-tag)] theme-muted border-[var(--border-main)] hover:border-[var(--accent-crimson)] hover:text-[var(--accent-crimson)]'}
                   `}
                 >
                   {cat}
