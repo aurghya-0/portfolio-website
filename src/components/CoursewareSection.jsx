@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { COURSEWARE_SITES } from '../data/portfolioData';
 import { ExternalLink, Github, Globe, BookOpen, Layers, Sparkles, ChevronRight, Terminal, Cpu } from 'lucide-react';
+import { navigateWithTransition } from './PageTransitionCurtain';
 
-export default function CoursewareSection({ onSelectSite }) {
+export default function CoursewareSection({ onSelectSite, onTransition }) {
   const [selectedCategory, setSelectedCategory] = useState('All');
 
   const categories = ['All', 'Operating Systems', 'Python & Data Science', 'Python & Data Mining', 'C & Systems Programming', 'Java & OOP'];
@@ -10,6 +11,11 @@ export default function CoursewareSection({ onSelectSite }) {
   const filteredSites = selectedCategory === 'All'
     ? COURSEWARE_SITES
     : COURSEWARE_SITES.filter(site => site.category === selectedCategory);
+
+  const handleOpenShowcase = (e) => {
+    e.preventDefault();
+    navigateWithTransition('/courseware/', onTransition, 'Opening Standalone Courseware Showcase...');
+  };
 
   return (
     <section id="courseware" className="py-12 lg:py-16 px-6 sm:px-10 lg:px-12 border-b border-[var(--border-main)]">
@@ -21,13 +27,13 @@ export default function CoursewareSection({ onSelectSite }) {
         </div>
 
         <div className="flex items-center gap-3">
-          <a 
-            href="/courseware/"
+          <button 
+            onClick={handleOpenShowcase}
             className="px-3.5 py-1 rounded-full bg-gradient-to-r from-[var(--accent-crimson)] to-rose-600 hover:opacity-90 text-white font-mono text-xs font-bold flex items-center gap-1.5 shadow-sm transition-all cursor-pointer"
           >
             <span>Open Standalone Showcase Page</span>
             <ExternalLink size={12} />
-          </a>
+          </button>
           <span className="font-mono text-xs text-[var(--accent-gold)] font-semibold px-3 py-1 rounded-full bg-[var(--bg-tag)] border border-[var(--border-main)] hidden sm:inline-block">
             {COURSEWARE_SITES.length} Dedicated Mini-Websites
           </span>

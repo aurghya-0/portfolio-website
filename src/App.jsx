@@ -18,6 +18,7 @@ import CourseModal from './components/CourseModal';
 import CoursewareModal from './components/CoursewareModal';
 import CvModal from './components/CvModal';
 import PresentationModal from './components/PresentationModal';
+import PageTransitionCurtain from './components/PageTransitionCurtain';
 
 export default function App() {
   const [activeSection, setActiveSection] = useState('orientation');
@@ -28,6 +29,7 @@ export default function App() {
   const [selectedCoursewareSite, setSelectedCoursewareSite] = useState(null);
   const [isCvOpen, setIsCvOpen] = useState(false);
   const [isPresentationOpen, setIsPresentationOpen] = useState(false);
+  const [transitionState, setTransitionState] = useState({ active: false, message: '' });
   const [theme, setTheme] = useState(() => {
     return localStorage.getItem('theme') || 'system';
   });
@@ -114,6 +116,7 @@ export default function App() {
 
   return (
     <div className="app-container relative">
+      <PageTransitionCurtain isTransitioning={transitionState.active} message={transitionState.message} />
       <ScrollProgress />
       <div className="bg-grid-pattern fixed inset-0 pointer-events-none"></div>
 
@@ -142,7 +145,10 @@ export default function App() {
           <OrientationSection />
           <PublicationsSection onCopyBibtex={triggerToast} />
           <TeachingSection onSelectCourse={(course) => setSelectedCourse(course)} />
-          <CoursewareSection onSelectSite={(site) => setSelectedCoursewareSite(site)} />
+          <CoursewareSection 
+            onSelectSite={(site) => setSelectedCoursewareSite(site)} 
+            onTransition={setTransitionState}
+          />
           <ExperienceSection />
           <LeadershipSection />
           <OpenSourceSection />

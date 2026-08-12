@@ -4,6 +4,7 @@ import CoursewareIframeModal from './CoursewareIframeModal';
 import CoursewareModal from '../components/CoursewareModal';
 import ThemeToggle from '../components/ThemeToggle';
 import CommandPalette from '../components/CommandPalette';
+import PageTransitionCurtain, { navigateWithTransition } from '../components/PageTransitionCurtain';
 import { 
   ArrowLeft, Search, Globe, Github, ExternalLink, Sparkles, 
   BookOpen, Layers, CheckCircle2, Cpu, Monitor, Tv, Command
@@ -15,6 +16,7 @@ export default function CoursewareApp() {
   const [previewSite, setPreviewSite] = useState(null);
   const [detailSite, setDetailSite] = useState(null);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [transitionState, setTransitionState] = useState({ active: false, message: '' });
   const [theme, setTheme] = useState(() => {
     return localStorage.getItem('theme') || 'system';
   });
@@ -53,6 +55,11 @@ export default function CoursewareApp() {
     localStorage.setItem('theme', newTheme);
   };
 
+  const handleBackToPortfolio = (e) => {
+    e.preventDefault();
+    navigateWithTransition('/', setTransitionState, 'Returning to Academic Portfolio...');
+  };
+
   const categories = ['All', 'Operating Systems', 'Python & Data Science', 'Python & Data Mining', 'C & Systems Programming', 'Java & OOP'];
 
   // Filter sites by category and search query
@@ -67,7 +74,9 @@ export default function CoursewareApp() {
   });
 
   return (
-    <div className="min-h-screen bg-[var(--bg-page)] theme-body font-sans text-left relative selection:bg-[var(--accent-crimson)] selection:text-white">
+    <div className="min-h-screen bg-[var(--bg-page)] theme-body font-sans text-left relative selection:bg-[var(--accent-crimson)] selection:text-white animate-in fade-in duration-300">
+      <PageTransitionCurtain isTransitioning={transitionState.active} message={transitionState.message} />
+
       {/* Background Grid Pattern */}
       <div className="bg-grid-pattern fixed inset-0 pointer-events-none"></div>
 
@@ -77,13 +86,13 @@ export default function CoursewareApp() {
           
           {/* Back to Portfolio Link */}
           <div className="flex items-center gap-3">
-            <a
-              href="/"
+            <button
+              onClick={handleBackToPortfolio}
               className="px-3.5 py-2 rounded-xl bg-[var(--bg-card)] hover:bg-[var(--bg-input)] border border-[var(--border-main)] theme-title font-mono text-xs font-bold flex items-center gap-2 transition-all shadow-xs cursor-pointer group"
             >
               <ArrowLeft size={15} className="group-hover:-translate-x-1 transition-transform text-[var(--accent-crimson)]" />
               <span>Back to Main Portfolio</span>
-            </a>
+            </button>
 
             <span className="hidden sm:inline-block font-mono text-xs text-[var(--accent-gold)] font-bold px-3 py-1 rounded-full bg-[var(--bg-tag)] border border-[var(--border-main)]">
               CSE-420 · Courseware Showcase
@@ -307,7 +316,7 @@ export default function CoursewareApp() {
       <footer className="mt-16 py-8 px-6 border-t border-[var(--border-main)] text-center font-mono text-xs theme-muted">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
           <span>{AUTHOR_INFO.name} — Academic Courseware Directory</span>
-          <a href="/" className="theme-crimson hover:underline font-bold">← Back to Academic Portfolio</a>
+          <button onClick={handleBackToPortfolio} className="theme-crimson hover:underline font-bold cursor-pointer">← Back to Academic Portfolio</button>
         </div>
       </footer>
 
