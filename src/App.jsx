@@ -5,6 +5,7 @@ import HeroSection from './components/HeroSection';
 import OrientationSection from './components/OrientationSection';
 import PublicationsSection from './components/PublicationsSection';
 import TeachingSection from './components/TeachingSection';
+import CoursewareSection from './components/CoursewareSection';
 import ExperienceSection from './components/ExperienceSection';
 import LeadershipSection from './components/LeadershipSection';
 import OpenSourceSection from './components/OpenSourceSection';
@@ -14,6 +15,7 @@ import Toast from './components/Toast';
 import CommandPalette from './components/CommandPalette';
 import ScrollProgress from './components/ScrollProgress';
 import CourseModal from './components/CourseModal';
+import CoursewareModal from './components/CoursewareModal';
 import CvModal from './components/CvModal';
 import PresentationModal from './components/PresentationModal';
 
@@ -23,6 +25,7 @@ export default function App() {
   const [toastMessage, setToastMessage] = useState('');
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [selectedCourse, setSelectedCourse] = useState(null);
+  const [selectedCoursewareSite, setSelectedCoursewareSite] = useState(null);
   const [isCvOpen, setIsCvOpen] = useState(false);
   const [isPresentationOpen, setIsPresentationOpen] = useState(false);
   const [theme, setTheme] = useState(() => {
@@ -91,7 +94,7 @@ export default function App() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sectionIds = ['orientation', 'publications', 'teaching', 'experience', 'leadership', 'opensource', 'toolkit', 'contact'];
+      const sectionIds = ['orientation', 'publications', 'teaching', 'courseware', 'experience', 'leadership', 'opensource', 'toolkit', 'contact'];
       const scrollPos = window.scrollY + 180;
 
       for (let i = sectionIds.length - 1; i >= 0; i--) {
@@ -139,6 +142,7 @@ export default function App() {
           <OrientationSection />
           <PublicationsSection onCopyBibtex={triggerToast} />
           <TeachingSection onSelectCourse={(course) => setSelectedCourse(course)} />
+          <CoursewareSection onSelectSite={(site) => setSelectedCoursewareSite(site)} />
           <ExperienceSection />
           <LeadershipSection />
           <OpenSourceSection />
@@ -150,6 +154,7 @@ export default function App() {
       <Toast message={toastMessage} />
       <CommandPalette isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
       <CourseModal course={selectedCourse} onClose={() => setSelectedCourse(null)} />
+      <CoursewareModal site={selectedCoursewareSite} onClose={() => setSelectedCoursewareSite(null)} />
       <CvModal isOpen={isCvOpen} onClose={() => setIsCvOpen(false)} />
       <PresentationModal 
         isOpen={isPresentationOpen} 

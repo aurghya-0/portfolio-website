@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { 
   Search, X, BookOpen, Scroll, Package, Award, Briefcase, 
-  ArrowRight, Command, CornerDownLeft 
+  ArrowRight, Command, CornerDownLeft, Globe 
 } from 'lucide-react';
-import { PUBLICATIONS, COURSES, OPEN_SOURCE, EXPERIENCE, SKILL_GROUPS } from '../data/portfolioData';
+import { PUBLICATIONS, COURSES, OPEN_SOURCE, EXPERIENCE, SKILL_GROUPS, COURSEWARE_SITES } from '../data/portfolioData';
 
 export default function CommandPalette({ isOpen, onClose }) {
   const [query, setQuery] = useState('');
@@ -20,6 +20,18 @@ export default function CommandPalette({ isOpen, onClose }) {
 
   // Build searchable items index
   const items = [];
+
+  COURSEWARE_SITES.forEach((site) => {
+    items.push({
+      id: `courseware-${site.id}`,
+      type: 'Courseware Portal',
+      title: site.title,
+      subtitle: `${site.courseCode} · ${site.subtitle}`,
+      url: site.liveUrl,
+      targetId: 'courseware',
+      icon: Globe
+    });
+  });
 
   PUBLICATIONS.forEach((pub) => {
     items.push({

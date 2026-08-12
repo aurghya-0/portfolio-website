@@ -28,11 +28,130 @@ export const SYLLABUS_NAV = [
   { code: "CSE-100", label: "Orientation", id: "orientation" },
   { code: "CSE-300", label: "Research & Papers", id: "publications" },
   { code: "CSE-400", label: "Courses & Pedagogy", id: "teaching" },
+  { code: "CSE-420", label: "Courseware Portals", id: "courseware" },
   { code: "CSE-200", label: "Appointments", id: "experience" },
   { code: "CSE-500", label: "Service & Clubs", id: "leadership" },
   { code: "CSE-550", label: "Open Source", id: "opensource" },
   { code: "CSE-600", label: "Qualifications & Skills", id: "toolkit" },
   { code: "CSE-700", label: "Office Hours", id: "contact" }
+];
+
+export const COURSEWARE_SITES = [
+  {
+    id: "kernelcraft-os",
+    title: "KernelCraft | Operating Systems Lab",
+    subtitle: "Interactive OS Concepts, Kernel Visualizations & POSIX System Programming",
+    courseCode: "PCC-CS502 / CS592",
+    badge: "Featured OS Lab Portal",
+    category: "Operating Systems",
+    liveUrl: "https://aurghya-0.github.io/operating-systems-lab/",
+    githubUrl: "https://github.com/aurghya-0/operating-systems-lab",
+    techStack: ["C", "Linux System Calls", "POSIX Threads", "HTML5/JS", "IPC & Memory"],
+    desc: "Comprehensive interactive laboratory portal for MAKAUT Operating Systems curriculum. Features interactive CPU scheduling visualizers, memory page replacement simulators, process synchronization codebases, and Linux POSIX C system call tutorials.",
+    features: [
+      "Interactive CPU Scheduling Simulator (FCFS, SJF, Round Robin, Priority Scheduling)",
+      "POSIX Multithreading & Semaphore Synchronization Lab Code (Dining Philosophers, Producer-Consumer)",
+      "Page Replacement Algorithm Simulators (FIFO, LRU, Optimal Page Replacement)",
+      "Linux File Systems, Fork/Exec IPC, & C System Call Interactive Reference Codebase"
+    ],
+    highlights: [
+      "100% Interactive In-Browser Visualizations",
+      "Production-Grade C & POSIX Implementations",
+      "Full MAKAUT CS592 Lab Manual Integration"
+    ]
+  },
+  {
+    id: "advanced-python",
+    title: "Advanced Python, EDA & Data Mining Basics",
+    subtitle: "Exploratory Data Analysis, Machine Learning Pipelines & Data Mining",
+    courseCode: "CSE-401 / PEC-IT702B",
+    badge: "Data Science Portal",
+    category: "Python & Data Mining",
+    liveUrl: "https://aurghya-0.github.io/advanced-python/",
+    githubUrl: "https://github.com/aurghya-0/advanced-python",
+    techStack: ["Python 3.11", "Pandas", "NumPy", "Scikit-Learn", "Jupyter"],
+    desc: "Educational courseware portal covering advanced Pythonic OOP, functional idioms, exploratory data analysis (EDA), data cleaning, statistical modeling, and data mining algorithms designed for senior undergraduate CSE & IT students.",
+    features: [
+      "Interactive Pythonic OOP & Functional Programming Notebooks",
+      "Comprehensive Data Mining Pipelines (Apriori Association Rules, K-Means, Decision Trees)",
+      "Real-World Healthcare & Financial Dataset Analysis Case Studies",
+      "Scikit-Learn Machine Learning Workflow Templates & Feature Scaling Guides"
+    ],
+    highlights: [
+      "Complete Jupyter & Markdown Code Repositories",
+      "End-to-End Data Mining Workflows",
+      "Interactive Exploratory Data Analysis Demos"
+    ]
+  },
+  {
+    id: "pcc-cs393-dsa",
+    title: "PCC-CS393 Data Structures & Algorithms Lab",
+    subtitle: "MAKAUT CSE-393 Curriculum, Algorithmic Visualizations & C Codebase",
+    courseCode: "PCC-CS393",
+    badge: "Core DSA Curriculum",
+    category: "Data Structures & Algorithms",
+    liveUrl: "https://aurghya-0.github.io/pcc-cs393/",
+    githubUrl: "https://github.com/aurghya-0/pcc-cs393",
+    techStack: ["C / C++", "Data Structures", "Algorithms", "Pointers", "GDB Debugging"],
+    desc: "Official lab courseware website for PCC-CS393 (Data Structures & Algorithms Lab). Contains production-grade C/C++ implementations, step-by-step memory stack/heap trace diagrams, time complexity analyses, and interactive algorithm benchmarks.",
+    features: [
+      "Linear Data Structures: Dynamic Arrays, Linked Lists (Singly, Doubly, Circular), Stacks & Queues",
+      "Non-Linear Data Structures: Binary Search Trees (BST), AVL Tree Balancing & Binary Heaps",
+      "Graph Algorithms: BFS, DFS, Dijkstra Shortest Path, Prim & Kruskal Spanning Trees",
+      "Sorting & Searching Benchmarks with Big-O Time & Space Complexity Analyses"
+    ],
+    highlights: [
+      "Official MAKAUT PCC-CS393 Lab Syllabus Alignment",
+      "Memory Pointer Allocation & Stack Tracing",
+      "Optimized C/C++ Reference Implementations"
+    ]
+  },
+  {
+    id: "c-programming-tutorial",
+    title: "C Programming Mastery Tutorial Portal",
+    subtitle: "Foundational C Language, Pointer Mechanics & System Allocation",
+    courseCode: "ESC-191 / ESC-291",
+    badge: "First-Year Foundation",
+    category: "C & Systems Programming",
+    liveUrl: "https://aurghya-0.github.io/c-programming/",
+    githubUrl: "https://github.com/aurghya-0/c-programming",
+    techStack: ["C99 / C11", "Pointer Arithmetic", "Dynamic Memory", "File I/O", "Structures"],
+    desc: "First-year undergraduate courseware portal introducing students to C programming fundamentals, pointer arithmetic mechanics, dynamic allocation (malloc/calloc/realloc/free), structures, and modular file stream handling.",
+    features: [
+      "Step-by-Step Pointer Arithmetic & Memory Stack/Heap Layout Diagrams",
+      "Interactive C Code Snippets & GDB Debugging Walkthroughs",
+      "Structured Practice Problem Sets & Automated Unit Test Exercises",
+      "File System I/O, Binary File Streams & Dynamic Struct Projects"
+    ],
+    highlights: [
+      "Tailored for First-Year Engineering Students",
+      "Visual Memory Layout & Pointer Arithmetic",
+      "Graded Coding Exercises & Solutions"
+    ]
+  },
+  {
+    id: "pcc-cs593-java",
+    title: "PCC-CS593 Java OOP Laboratory Portal",
+    subtitle: "Object-Oriented Design, Multithreading & Event-Driven Applications",
+    courseCode: "PCC-CS593",
+    badge: "MAKAUT Java Lab",
+    category: "Java & OOP",
+    liveUrl: "https://aurghya-0.github.io/PCC-CS593-Lab/",
+    githubUrl: "https://github.com/aurghya-0/PCC-CS593-Lab",
+    techStack: ["Java 17+", "OOP Principles", "Multithreading", "Swing / JavaFX", "Collections"],
+    desc: "Comprehensive laboratory portal for PCC-CS593 Object-Oriented Programming using Java. Covers core OOP pillars, exception handling, Java Collection Framework, multithreading concurrency, and event-driven GUI desktop applications.",
+    features: [
+      "OOP Design Patterns: Encapsulation, Inheritance, Polymorphism & Interfaces",
+      "Java Concurrency, Thread Synchronization & Inter-thread Communication",
+      "Java Collections Framework (ArrayList, HashMap, TreeSet) & Generics Deep-Dive",
+      "Event-Driven Desktop GUI Programming with JavaFX & Swing Components"
+    ],
+    highlights: [
+      "Complete MAKAUT PCC-CS593 Experiment Suite",
+      "Thread Concurrency & Synchronization Demos",
+      "Modern Java 17+ Language Features"
+    ]
+  }
 ];
 
 export const RESEARCH_PILLARS = [
