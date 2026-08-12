@@ -84,26 +84,26 @@ export const COURSEWARE_SITES = [
     ]
   },
   {
-    id: "pcc-cs393-dsa",
-    title: "PCC-CS393 Data Structures & Algorithms Lab",
-    subtitle: "MAKAUT CSE-393 Curriculum, Algorithmic Visualizations & C Codebase",
+    id: "pcc-cs393-python",
+    title: "PCC-CS393 Python Programming Lab Portal",
+    subtitle: "MAKAUT CSE-393 Curriculum, Pythonic Data Structures & Scripting",
     courseCode: "PCC-CS393",
-    badge: "Core DSA Curriculum",
-    category: "Data Structures & Algorithms",
+    badge: "MAKAUT Python Lab",
+    category: "Python & Data Science",
     liveUrl: "https://aurghya-0.github.io/pcc-cs393/",
     githubUrl: "https://github.com/aurghya-0/pcc-cs393",
-    techStack: ["C / C++", "Data Structures", "Algorithms", "Pointers", "GDB Debugging"],
-    desc: "Official lab courseware website for PCC-CS393 (Data Structures & Algorithms Lab). Contains production-grade C/C++ implementations, step-by-step memory stack/heap trace diagrams, time complexity analyses, and interactive algorithm benchmarks.",
+    techStack: ["Python 3", "Pythonic OOP", "Data Structures", "File Handling", "NumPy Basics"],
+    desc: "Official laboratory courseware portal for PCC-CS393 (Python Programming Lab) under the MAKAUT curriculum. Features Pythonic data structure implementations, object-oriented design exercises, file processing scripts, and interactive lab tutorials.",
     features: [
-      "Linear Data Structures: Dynamic Arrays, Linked Lists (Singly, Doubly, Circular), Stacks & Queues",
-      "Non-Linear Data Structures: Binary Search Trees (BST), AVL Tree Balancing & Binary Heaps",
-      "Graph Algorithms: BFS, DFS, Dijkstra Shortest Path, Prim & Kruskal Spanning Trees",
-      "Sorting & Searching Benchmarks with Big-O Time & Space Complexity Analyses"
+      "Pythonic Data Structures: Lists, Tuples, Dictionaries, Sets & Custom Classes",
+      "Object-Oriented Programming (OOP) & Exception Handling Mechanics",
+      "Automated File I/O, Regular Expressions & Module Packaging Workflows",
+      "NumPy Array Manipulations & Data Science Prerequisites"
     ],
     highlights: [
       "Official MAKAUT PCC-CS393 Lab Syllabus Alignment",
-      "Memory Pointer Allocation & Stack Tracing",
-      "Optimized C/C++ Reference Implementations"
+      "Pythonic Code Practices & PEP 8 Guidelines",
+      "Interactive Lab Notebooks & Code Repositories"
     ]
   },
   {

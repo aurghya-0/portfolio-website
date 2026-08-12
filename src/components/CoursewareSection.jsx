@@ -5,7 +5,7 @@ import { ExternalLink, Github, Globe, BookOpen, Layers, Sparkles, ChevronRight, 
 export default function CoursewareSection({ onSelectSite }) {
   const [selectedCategory, setSelectedCategory] = useState('All');
 
-  const categories = ['All', 'Operating Systems', 'Python & Data Mining', 'Data Structures & Algorithms', 'C & Systems Programming', 'Java & OOP'];
+  const categories = ['All', 'Operating Systems', 'Python & Data Science', 'Python & Data Mining', 'C & Systems Programming', 'Java & OOP'];
 
   const filteredSites = selectedCategory === 'All'
     ? COURSEWARE_SITES
