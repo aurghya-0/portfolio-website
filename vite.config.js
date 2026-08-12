@@ -14,6 +14,7 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: resolve(__dirname, 'index.html'),
+        courseware: resolve(__dirname, 'courseware/index.html'),
         synctask: resolve(__dirname, 'synctask/index.html'),
         synctaskPrivacy: resolve(__dirname, 'synctask/privacy/index.html'),
       },

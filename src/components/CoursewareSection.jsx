@@ -19,9 +19,19 @@ export default function CoursewareSection({ onSelectSite }) {
           <span className="w-2 h-2 rounded-full bg-[var(--accent-crimson)]"></span>
           <span>CSE-420 · Interactive Courseware Portals</span>
         </div>
-        <span className="font-mono text-xs text-[var(--accent-gold)] font-semibold px-3 py-1 rounded-full bg-[var(--bg-tag)] border border-[var(--border-main)]">
-          {COURSEWARE_SITES.length} Dedicated Mini-Websites
-        </span>
+
+        <div className="flex items-center gap-3">
+          <a 
+            href="/courseware/"
+            className="px-3.5 py-1 rounded-full bg-gradient-to-r from-[var(--accent-crimson)] to-rose-600 hover:opacity-90 text-white font-mono text-xs font-bold flex items-center gap-1.5 shadow-sm transition-all cursor-pointer"
+          >
+            <span>Open Standalone Showcase Page</span>
+            <ExternalLink size={12} />
+          </a>
+          <span className="font-mono text-xs text-[var(--accent-gold)] font-semibold px-3 py-1 rounded-full bg-[var(--bg-tag)] border border-[var(--border-main)] hidden sm:inline-block">
+            {COURSEWARE_SITES.length} Dedicated Mini-Websites
+          </span>
+        </div>
       </div>
 
       <h2 className="font-['Cinzel'] text-2xl sm:text-3xl font-bold theme-title mb-3 tracking-tight">
